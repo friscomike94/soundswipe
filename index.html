@@ -142,8 +142,11 @@ async function sbPushCombo(c){try{await fetch(SB_URL+'/rest/v1/ss_combos',{metho
 async function sbDeleteCombo(id){try{await fetch(SB_URL+'/rest/v1/ss_combos?id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:SBH});}catch(e){}}
 async function sbPull(){try{const r=await fetch(SB_URL+'/rest/v1/ss_ratings?select=*',{headers:SBH});if(r.ok){(await r.json()).forEach(x=>{state.v[x.sound_id]=x.verdict;if(x.tags)state.tags[x.sound_id]=x.tags;});}const rc=await fetch(SB_URL+'/rest/v1/ss_combos?select=*',{headers:SBH});if(rc.ok){const local=new Set(state.combos.map(c=>c.id));(await rc.json()).forEach(x=>{if(!local.has(x.id))state.combos.push({id:x.id,ids:x.sound_ids||[],works:x.works||0,unique:x.unique_score||0,note:x.note||''});});}save();}catch(e){}}
 async function load(){
- const res=await fetch('manifest.json?ts='+Date.now());
- const j=await res.json(); SOUNDS=j.sounds;
+ let base=[];
+ try{const res=await fetch('manifest.json?ts='+Date.now());const j=await res.json();base=j.sounds||[];}catch(e){}
+ // merge live sounds from Supabase (auto-added by the generator, no redeploy needed)
+ try{const r=await fetch(SB_URL+'/rest/v1/ss_sounds?select=*&order=created_at.asc',{headers:SBH});if(r.ok){const live=await r.json();const seen=new Set(base.map(s=>s.id));live.forEach(s=>{if(!seen.has(s.id)){seen.add(s.id);base.push({id:s.id,title:s.title,full:s.full_name,category:s.category,instrument:s.instrument,bpm:s.bpm,batch:s.batch,prompt:s.prompt,cdn:s.cdn,suno:s.suno});}});}}catch(e){}
+ SOUNDS=base;
  if(!state.order.length) state.order=SOUNDS.map(s=>s.id);
  SOUNDS.forEach(s=>{if(!state.order.includes(s.id))state.order.push(s.id);});
  CATS=['전체',...Array.from(new Set(SOUNDS.map(s=>s.category)))];
