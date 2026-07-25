@@ -11,38 +11,33 @@
 <title>SoundSwipe · My Sound DB</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"/>
 <style>
-:root{
- --bg:#0b0b0d;--bg2:#16161a;--bg3:#202026;--line:#2c2c34;
- --ink:#f4f4f6;--dim:#9a9aa4;--dim2:#6a6a74;
- --lime:#c8fa46;--gold:#ffcf40;--red:#ff5a5a;--amber:#ffb454;
-}
+:root{--bg:#0b0b0d;--bg2:#16161a;--bg3:#202026;--line:#2c2c34;--ink:#f4f4f6;--dim:#9a9aa4;--dim2:#6a6a74;--lime:#c8fa46;--gold:#ffcf40;--red:#ff5a5a;--amber:#ffb454}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{background:var(--bg);color:var(--ink);font-family:Pretendard,system-ui,-apple-system,sans-serif;overflow:hidden;
- display:flex;flex-direction:column;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);}
-.head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 6px;gap:8px}
-.head h1{font-size:16px;font-weight:800;letter-spacing:-.01em}
-.head h1 span{color:var(--lime)}
-.tabbtns{display:flex;gap:6px}
-.tabbtn{background:var(--bg2);border:1px solid var(--line);color:var(--dim);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+body{background:var(--bg);color:var(--ink);font-family:Pretendard,system-ui,-apple-system,sans-serif;overflow:hidden;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 4px;gap:8px}
+.head h1{font-size:16px;font-weight:800}.head h1 span{color:var(--lime)}
+.tabbtns{display:flex;gap:5px}
+.tabbtn{background:var(--bg2);border:1px solid var(--line);color:var(--dim);padding:6px 11px;border-radius:999px;font-size:12px;font-weight:700}
 .tabbtn.on{background:var(--lime);color:#0b0b0d;border-color:var(--lime)}
-.tabbtn .badge{font-size:11px;opacity:.8;margin-left:3px}
+.tabbtn .badge{font-size:10px;opacity:.8;margin-left:2px}
+.catbar{display:flex;gap:6px;overflow-x:auto;padding:6px 14px 8px;-webkit-overflow-scrolling:touch}
+.catbar::-webkit-scrollbar{display:none}
+.cchip{flex-shrink:0;background:var(--bg2);border:1px solid var(--line);color:var(--dim);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.cchip.on{background:#26301a;border-color:var(--lime);color:var(--lime)}
 main{flex:1;position:relative;overflow:hidden}
 .view{position:absolute;inset:0;display:none;flex-direction:column}
 .view.on{display:flex}
-
-/* SWIPE */
-#swipe{padding:8px 14px 12px}
+#swipe{padding:0 14px 10px}
 .progress{font-size:12px;color:var(--dim2);text-align:center;margin-bottom:6px}
-.cardwrap{flex:1;position:relative;display:flex;align-items:stretch;justify-content:center}
-.card{position:absolute;inset:0;background:linear-gradient(160deg,#191920,#111116);border:1px solid var(--line);border-radius:22px;
- padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);touch-action:pan-y}
-.cat{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:var(--lime);color:#0b0b0d;font-size:11px;font-weight:800;padding:3px 10px;border-radius:8px}
-.ttl{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.cardwrap{flex:1;position:relative;display:flex}
+.card{position:absolute;inset:0;background:linear-gradient(160deg,#191920,#111116);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 12px 40px rgba(0,0,0,.5);touch-action:pan-y}
+.cat{align-self:flex-start;background:var(--lime);color:#0b0b0d;font-size:11px;font-weight:800;padding:3px 10px;border-radius:8px}
+.ttl{font-size:21px;font-weight:800;line-height:1.2}
 .meta{font-size:13px;color:var(--dim)}
-.prompt{font-size:12px;color:var(--dim);line-height:1.55;flex:1;overflow:auto;background:#0e0e12;border:1px solid var(--line);border-radius:12px;padding:12px}
+.prompt{font-size:12px;color:var(--dim);line-height:1.5;flex:1;overflow:auto;background:#0e0e12;border:1px solid var(--line);border-radius:12px;padding:11px}
 .playrow{display:flex;align-items:center;gap:12px}
-.bigplay{width:58px;height:58px;border-radius:50%;background:var(--lime);color:#0b0b0d;border:none;font-size:24px;font-weight:800;flex-shrink:0}
+.bigplay{width:56px;height:56px;border-radius:50%;background:var(--lime);color:#0b0b0d;border:none;font-size:23px;font-weight:800;flex-shrink:0}
 .bigplay.playing{background:var(--bg3);color:var(--lime);border:1px solid var(--lime)}
 .seekwrap{flex:1;display:flex;flex-direction:column;gap:4px}
 .seek{width:100%;accent-color:var(--lime);height:4px}
@@ -51,37 +46,53 @@ main{flex:1;position:relative;overflow:hidden}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{background:var(--bg3);border:1px solid var(--line);color:var(--dim);font-size:12px;padding:5px 11px;border-radius:999px;font-weight:600}
 .tag.on{background:#26301a;border-color:var(--lime);color:var(--lime)}
-.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px 4px}
-.act{border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;flex-shrink:0}
-.act.small{width:52px;height:52px}
-.act.big{width:64px;height:64px;font-size:26px}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 2px}
+.act{border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
+.act.small{width:50px;height:50px;font-size:21px}.act.big{width:60px;height:60px;font-size:25px}
 .a-allergy{background:#2a1414;border:1px solid var(--red);color:var(--red)}
 .a-dislike{background:#241618;border:1px solid #7a3a3a;color:#ff8a8a}
 .a-like{background:#1c2a10;border:1px solid var(--lime);color:var(--lime)}
 .a-super{background:#2e2610;border:1px solid var(--gold);color:var(--gold);box-shadow:0 0 18px rgba(255,207,64,.35)}
 .a-undo{background:var(--bg2);border:1px solid var(--line);color:var(--dim);font-size:15px}
-.actlabels{display:flex;justify-content:space-between;font-size:10px;color:var(--dim2);padding:0 20px 6px;text-align:center}
-.actlabels span{width:60px;text-align:center}
-.hint{font-size:11px;color:var(--dim2);text-align:center;padding-bottom:6px}
-.flash{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-size:64px;font-weight:900;opacity:0;pointer-events:none;transition:opacity .12s}
+.actlabels{display:flex;justify-content:space-between;font-size:10px;color:var(--dim2);padding:0 16px 4px}
+.actlabels span{width:56px;text-align:center}
+.hint{font-size:11px;color:var(--dim2);text-align:center;padding-bottom:4px}
+.flash{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font-size:60px;font-weight:900;opacity:0;pointer-events:none;transition:opacity .12s}
 .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--dim);text-align:center;padding:30px}
-
-/* LIKED */
-#liked{overflow-y:auto;padding:10px 14px 30px}
-.sec{font-size:12px;color:var(--dim2);text-transform:uppercase;letter-spacing:.1em;margin:14px 4px 8px}
-.row{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px}
+#liked,#combos{overflow-y:auto;padding:6px 14px 30px}
+.topbar{position:sticky;top:0;background:var(--bg);padding:6px 0 8px;display:flex;gap:8px;z-index:5}
+.tbtn{flex:1;background:var(--bg2);border:1px solid var(--line);color:var(--dim);border-radius:10px;padding:9px;font-weight:700;font-size:12px}
+.tbtn.act1{background:var(--lime);color:#0b0b0d;border-color:var(--lime)}
+.sec{font-size:12px;color:var(--dim2);text-transform:uppercase;letter-spacing:.08em;margin:12px 4px 8px}
+.row{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:11px;margin-bottom:8px}
 .row.super{border-color:var(--gold)}
-.row .rp{width:40px;height:40px;border-radius:50%;background:var(--bg3);border:1px solid var(--line);color:var(--ink);font-size:15px;flex-shrink:0}
+.row.sel{border-color:var(--lime);background:#1a2012}
+.row .rp{width:38px;height:38px;border-radius:50%;background:var(--bg3);border:1px solid var(--line);color:var(--ink);font-size:14px;flex-shrink:0}
 .row .rp.playing{background:var(--lime);color:#0b0b0d;border-color:var(--lime)}
 .row .rt{flex:1;min-width:0}
 .row .rt .n{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .rt .m{font-size:11px;color:var(--dim)}
 .row .rt .tg{font-size:10px;color:var(--lime);margin-top:2px}
-.row .mark{font-size:16px;flex-shrink:0}
+.row .mark{font-size:15px;flex-shrink:0}
 .row .rm{background:none;border:none;color:var(--dim2);font-size:16px;padding:4px}
-.expbar{position:sticky;top:0;background:var(--bg);padding:6px 0 10px;display:flex;gap:8px}
-.expbtn{flex:1;background:var(--lime);color:#0b0b0d;border:none;border-radius:10px;padding:10px;font-weight:800;font-size:13px}
-.expbtn.ghost{background:transparent;color:var(--dim);border:1px solid var(--line)}
+.chkbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#0b0b0d}
+.chkbox.on{background:var(--lime);border-color:var(--lime)}
+.fabbar{position:sticky;bottom:0;background:linear-gradient(#0b0b0d00,#0b0b0d 30%);padding:12px 0 4px;display:flex;gap:8px}
+.fab{flex:1;background:var(--lime);color:#0b0b0d;border:none;border-radius:12px;padding:13px;font-weight:800;font-size:14px}
+.fab:disabled{opacity:.4}
+.combo{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:12px}
+.combo h3{font-size:14px;font-weight:800;margin-bottom:8px}
+.stack{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.layer{display:flex;align-items:center;gap:8px;background:#0e0e12;border:1px solid var(--line);border-radius:10px;padding:8px}
+.layer .ln{flex:1;font-size:12px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.layer .mute{background:var(--bg3);border:1px solid var(--line);color:var(--dim);font-size:11px;padding:4px 8px;border-radius:7px;font-weight:700}
+.layer .mute.off{opacity:.5;text-decoration:line-through}
+.comborate{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--dim)}
+.rateset{display:flex;gap:3px}.rateset .s{font-size:16px;color:#3a3a44}.rateset .s.on{color:var(--lime)}
+.rateset.u .s.on{color:var(--gold)}
+.combobtns{display:flex;gap:8px;margin-top:10px}
+.cb{flex:1;border:none;border-radius:10px;padding:10px;font-weight:700;font-size:12px}
+.cb.play{background:var(--lime);color:#0b0b0d}.cb.del{background:transparent;color:var(--red);border:1px solid #5a2a2a}
 audio{display:none}
 </style>
 </head>
@@ -91,17 +102,15 @@ audio{display:none}
  <div class="tabbtns">
   <button class="tabbtn on" id="tabSwipe">스와이프</button>
   <button class="tabbtn" id="tabLiked">좋아요 <span class="badge" id="likedCount">0</span></button>
+  <button class="tabbtn" id="tabCombos">조합 <span class="badge" id="comboCount">0</span></button>
  </div>
 </div>
-
+<div class="catbar" id="catbar"></div>
 <main>
- <!-- SWIPE VIEW -->
  <section class="view on" id="swipe">
   <div class="progress" id="prog"></div>
   <div class="cardwrap" id="cardwrap"></div>
-  <div class="actlabels">
-   <span>알러지</span><span>싫어</span><span></span><span>좋아</span><span>수퍼</span>
-  </div>
+  <div class="actlabels"><span>알러지</span><span>싫어</span><span></span><span>좋아</span><span>수퍼</span></div>
   <div class="actions">
    <button class="act small a-allergy" id="bAllergy">⚡</button>
    <button class="act small a-dislike" id="bDislike">✕</button>
@@ -109,153 +118,108 @@ audio{display:none}
    <button class="act big a-like" id="bLike">♥</button>
    <button class="act big a-super" id="bSuper">★</button>
   </div>
-  <div class="hint">카드를 좌/우로 밀거나 버튼을 눌러 · 위로 밀면 수퍼라이크 · 태그는 밀기 전에 탭</div>
+  <div class="hint">좌/우 밀기 = 싫어/좋아 · 위로 = 수퍼 · 위 카테고리로 필터</div>
  </section>
-
- <!-- LIKED VIEW -->
  <section class="view" id="liked"></section>
+ <section class="view" id="combos"></section>
 </main>
-
 <audio id="au" playsinline></audio>
-
 <script>
 const CDN_SEEK={intro:0,drop:45};
 const TAGS=['drop','pad','vocal','bass','lead','texture','guitar','unique'];
-const LSK='soundswipe_v1';
-let SOUNDS=[], state={v:{},tags:{},order:[],idx:0}, au=document.getElementById('au'), curId=null, seekPt=0;
+const LSK='soundswipe_v2';
+let SOUNDS=[], CATS=[], state={v:{},tags:{},order:[],combos:[],catFilter:'전체'}, au=document.getElementById('au'), curId=null, seekPt=0;
+let selMode=false, selIds=[], comboAudios=[], comboPlayingId=null;
 try{const r=localStorage.getItem(LSK);if(r)state={...state,...JSON.parse(r)};}catch(e){}
+try{const old=localStorage.getItem('soundswipe_v1');if(old&&!Object.keys(state.v).length){const o=JSON.parse(old);state.v=o.v||{};state.tags=o.tags||{};state.order=o.order||[];}}catch(e){}
 function save(){localStorage.setItem(LSK,JSON.stringify(state));}
-
 async function load(){
  const res=await fetch('manifest.json?ts='+Date.now());
  const j=await res.json(); SOUNDS=j.sounds;
  if(!state.order.length) state.order=SOUNDS.map(s=>s.id);
- // append any new ids not yet in order
  SOUNDS.forEach(s=>{if(!state.order.includes(s.id))state.order.push(s.id);});
- save(); renderSwipe(); renderLiked();
+ CATS=['전체',...Array.from(new Set(SOUNDS.map(s=>s.category)))];
+ save(); renderCatbar(); renderSwipe(); renderLiked(); renderCombos();
 }
 function byId(id){return SOUNDS.find(s=>s.id===id);}
-function queue(){return state.order.filter(id=>!state.v[id]);}
-
-/* ---------- audio ---------- */
-function playSound(s,fromDrop){
- if(curId===s.id && !au.paused){au.pause();updatePlayUI();return;}
- if(curId!==s.id){au.src=s.cdn;curId=s.id;}
- const target=fromDrop?CDN_SEEK.drop:seekPt;
- const go=()=>{try{au.currentTime=target;}catch(e){} au.play().catch(()=>{}); updatePlayUI();};
- if(au.readyState>=1) go(); else au.addEventListener('loadedmetadata',go,{once:true});
-}
-function updatePlayUI(){
- document.querySelectorAll('.bigplay').forEach(b=>b.classList.toggle('playing',curId&&!au.paused));
- document.querySelectorAll('.row .rp').forEach(b=>b.classList.toggle('playing',b.dataset.id===curId&&!au.paused));
-}
+function inFilter(s){return state.catFilter==='전체'||s.category===state.catFilter;}
+function queue(){return state.order.filter(id=>{const s=byId(id);return s&&!state.v[id]&&inFilter(s);});}
+function renderCatbar(){const bar=document.getElementById('catbar');bar.innerHTML='';CATS.forEach(c=>{const b=document.createElement('button');b.className='cchip'+(state.catFilter===c?' on':'');b.textContent=c;b.onclick=()=>{state.catFilter=c;save();renderCatbar();renderSwipe();renderLiked();};bar.appendChild(b);});}
+function playSound(s,fromDrop){stopCombo();if(curId===s.id&&!au.paused){au.pause();updatePlayUI();return;}if(curId!==s.id){au.src=s.cdn;curId=s.id;}const target=fromDrop?CDN_SEEK.drop:seekPt;const go=()=>{try{au.currentTime=target;}catch(e){}au.play().catch(()=>{});updatePlayUI();};if(au.readyState>=1)go();else au.addEventListener('loadedmetadata',go,{once:true});}
+function updatePlayUI(){document.querySelectorAll('.bigplay').forEach(b=>b.classList.toggle('playing',curId&&!au.paused));document.querySelectorAll('.row .rp').forEach(b=>b.classList.toggle('playing',b.dataset.id===curId&&!au.paused));}
 au.addEventListener('timeupdate',()=>{const sk=document.getElementById('seek');if(sk&&au.duration){sk.value=(au.currentTime/au.duration*100)||0;const c=document.getElementById('ct');if(c)c.textContent=fmt(au.currentTime);}});
-au.addEventListener('play',updatePlayUI); au.addEventListener('pause',updatePlayUI);
+au.addEventListener('play',updatePlayUI);au.addEventListener('pause',updatePlayUI);
 function fmt(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
-
-/* ---------- swipe view ---------- */
-function renderSwipe(){
- const wrap=document.getElementById('cardwrap'); const q=queue();
- document.getElementById('prog').textContent = q.length? ((state.order.length-q.length+1)+' / '+state.order.length) : '완료!';
- wrap.innerHTML='';
- if(!q.length){wrap.innerHTML='<div class="empty"><div style="font-size:40px">✓</div><div>다 봤어! 새 사운드가 쌓이면 여기 다시 떠.<br>좋아요 탭에서 모은 걸 다시 들어봐.</div></div>';return;}
- const s=byId(q[0]);
- const card=document.createElement('div');card.className='card';card.id='topcard';
- const stags=state.tags[s.id]||[];
- card.innerHTML=`
-  <div class="cat">${s.category}${s.bpm?' · '+s.bpm+'BPM':''}</div>
-  <div class="ttl">${s.title}</div>
-  <div class="meta">${s.batch==='emo'?'감성 배치':'SH×BB 배치'}</div>
-  <div class="playrow">
-   <button class="bigplay" id="bp">▶</button>
-   <div class="seekwrap">
-    <input type="range" class="seek" id="seek" min="0" max="100" value="0"/>
-    <div class="seekmeta"><span id="ct">0:00</span><button class="jump" id="jd">→ 드롭 45s</button></div>
-   </div>
-  </div>
-  <div class="tags" id="tagrow">${TAGS.map(t=>`<button class="tag ${stags.includes(t)?'on':''}" data-t="${t}">${t}</button>`).join('')}</div>
-  <div class="prompt">${s.prompt}</div>
-  <div class="flash" id="flash"></div>`;
+function renderSwipe(){const wrap=document.getElementById('cardwrap');const q=queue();const total=state.order.filter(id=>{const s=byId(id);return s&&inFilter(s);}).length;document.getElementById('prog').textContent=q.length?((total-q.length+1)+' / '+total+(state.catFilter!=='전체'?' · '+state.catFilter:'')):'완료!';wrap.innerHTML='';
+ if(!q.length){wrap.innerHTML='<div class="empty"><div style="font-size:40px">✓</div><div>이 카테고리는 다 봤어.<br>다른 카테고리 고르거나 좋아요/조합 탭으로.</div></div>';return;}
+ const s=byId(q[0]);const stags=state.tags[s.id]||[];const card=document.createElement('div');card.className='card';card.id='topcard';
+ card.innerHTML='<div class="cat">'+s.category+(s.bpm?' · '+s.bpm+'BPM':'')+'</div><div class="ttl">'+s.title+'</div><div class="meta">'+(s.batch==='emo'?'감성 배치':'SH×BB 배치')+'</div><div class="playrow"><button class="bigplay" id="bp">▶</button><div class="seekwrap"><input type="range" class="seek" id="seek" min="0" max="100" value="0"/><div class="seekmeta"><span id="ct">0:00</span><button class="jump" id="jd">→ 드롭 45s</button></div></div></div><div class="tags" id="tagrow">'+TAGS.map(t=>'<button class="tag '+(stags.includes(t)?'on':'')+'" data-t="'+t+'">'+t+'</button>').join('')+'</div><div class="prompt">'+s.prompt+'</div><div class="flash" id="flash"></div>';
  wrap.appendChild(card);
  document.getElementById('bp').onclick=()=>playSound(s,false);
  document.getElementById('jd').onclick=()=>playSound(s,true);
  document.getElementById('seek').oninput=(e)=>{if(au.duration&&curId===s.id)au.currentTime=au.duration*e.target.value/100;};
  card.querySelectorAll('.tag').forEach(b=>b.onclick=()=>{const t=b.dataset.t;const arr=state.tags[s.id]||[];const i=arr.indexOf(t);if(i>=0)arr.splice(i,1);else arr.push(t);state.tags[s.id]=arr;save();b.classList.toggle('on');});
- attachSwipe(card,s);
- updatePlayUI();
-}
+ attachSwipe(card,s);updatePlayUI();}
 function flash(sym,color){const f=document.getElementById('flash');if(!f)return;f.textContent=sym;f.style.color=color;f.style.opacity='1';setTimeout(()=>{if(f)f.style.opacity='0';},260);}
-function verdict(v){
- const q=queue();if(!q.length)return;const s=byId(q[0]);
- state.v[s.id]=v;save();
- const map={allergy:['⚡','#ff5a5a'],dislike:['✕','#ff8a8a'],like:['♥','#c8fa46'],superlike:['★','#ffcf40']};
- flash(map[v][0],map[v][1]);
- renderLiked();
- setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length){const ns=byId(nq[0]);playSound(ns,false);}else{au.pause();}},200);
-}
-function undo(){const done=state.order.filter(id=>state.v[id]);if(!done.length)return;const last=done[done.length-1];delete state.v[last];save();renderSwipe();renderLiked();}
-
+function verdict(v){const q=queue();if(!q.length)return;const s=byId(q[0]);state.v[s.id]=v;save();const map={allergy:['⚡','#ff5a5a'],dislike:['✕','#ff8a8a'],like:['♥','#c8fa46'],superlike:['★','#ffcf40']};flash(map[v][0],map[v][1]);renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},200);}
+function undo(){const done=state.order.filter(id=>state.v[id]);if(!done.length)return;delete state.v[done[done.length-1]];save();renderSwipe();renderLiked();}
 document.getElementById('bAllergy').onclick=()=>verdict('allergy');
 document.getElementById('bDislike').onclick=()=>verdict('dislike');
 document.getElementById('bLike').onclick=()=>verdict('like');
 document.getElementById('bSuper').onclick=()=>verdict('superlike');
 document.getElementById('bUndo').onclick=undo;
-
-/* ---------- touch swipe ---------- */
-function attachSwipe(card,s){
- let sx=0,sy=0,dx=0,dy=0,drag=false;
+function attachSwipe(card,s){let sx=0,sy=0,dx=0,dy=0,drag=false;
  card.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;drag=true;},{passive:true});
- card.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];dx=t.clientX-sx;dy=t.clientY-sy;card.style.transform=`translate(${dx}px,${dy}px) rotate(${dx/20}deg)`;card.style.opacity=1-Math.min(Math.abs(dx),Math.abs(dy))/400;},{passive:true});
+ card.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];dx=t.clientX-sx;dy=t.clientY-sy;card.style.transform='translate('+dx+'px,'+dy+'px) rotate('+(dx/20)+'deg)';card.style.opacity=1-Math.min(Math.abs(dx),Math.abs(dy))/400;},{passive:true});
  card.addEventListener('touchend',()=>{drag=false;card.style.transition='transform .2s,opacity .2s';const TH=90;
-  if(dy<-TH && Math.abs(dy)>Math.abs(dx)){fly(card,0,-700);verdict('superlike');}
+  if(dy<-TH&&Math.abs(dy)>Math.abs(dx)){fly(card,0,-700);verdict('superlike');}
   else if(dx>TH){fly(card,700,dy);verdict('like');}
   else if(dx<-TH){fly(card,-700,dy);verdict('dislike');}
-  else if(dy>TH && Math.abs(dy)>Math.abs(dx)){fly(card,0,700);verdict('allergy');}
-  else {card.style.transform='';card.style.opacity='1';}
-  setTimeout(()=>{card.style.transition='';},220);dx=dy=0;});
-}
-function fly(card,x,y){card.style.transform=`translate(${x}px,${y}px) rotate(${x/20}deg)`;card.style.opacity='0';}
-
-/* ---------- liked view ---------- */
-function renderLiked(){
- const supers=state.order.filter(id=>state.v[id]==='superlike');
- const likes=state.order.filter(id=>state.v[id]==='like');
- document.getElementById('likedCount').textContent=supers.length+likes.length;
- const el=document.getElementById('liked');
- let html=`<div class="expbar"><button class="expbtn" id="exp">평가 내보내기 (JSON)</button><button class="expbtn ghost" id="rst">초기화</button></div>`;
- if(!supers.length && !likes.length){html+='<div class="empty" style="position:static;margin-top:40px">아직 좋아요한 사운드가 없어.<br>스와이프에서 ♥ 또는 ★ 해봐.</div>';}
- if(supers.length){html+=`<div class="sec">★ 수퍼라이크 (${supers.length})</div>`+supers.map(id=>rowHtml(id,true)).join('');}
- if(likes.length){html+=`<div class="sec">♥ 좋아요 (${likes.length})</div>`+likes.map(id=>rowHtml(id,false)).join('');}
+  else if(dy>TH&&Math.abs(dy)>Math.abs(dx)){fly(card,0,700);verdict('allergy');}
+  else{card.style.transform='';card.style.opacity='1';}
+  setTimeout(()=>{card.style.transition='';},220);dx=dy=0;});}
+function fly(card,x,y){card.style.transform='translate('+x+'px,'+y+'px) rotate('+(x/20)+'deg)';card.style.opacity='0';}
+function likedIds(){return state.order.filter(id=>{const s=byId(id);return s&&(state.v[id]==='superlike'||state.v[id]==='like')&&inFilter(s);});}
+function renderLiked(){const supers=likedIds().filter(id=>state.v[id]==='superlike');const likes=likedIds().filter(id=>state.v[id]==='like');document.getElementById('likedCount').textContent=Object.values(state.v).filter(v=>v==='like'||v==='superlike').length;const el=document.getElementById('liked');
+ let html='<div class="topbar"><button class="tbtn '+(selMode?'act1':'')+'" id="selToggle">'+(selMode?'조합 선택 중… (취소)':'＋ 조합 만들기')+'</button><button class="tbtn" id="expLiked">내보내기</button></div>';
+ if(!supers.length&&!likes.length){html+='<div class="empty" style="position:static;margin-top:36px">이 카테고리엔 좋아요한 게 없어.<br>스와이프에서 ♥/★ 해봐.</div>';}
+ if(supers.length){html+='<div class="sec">★ 수퍼라이크 ('+supers.length+')</div>'+supers.map(id=>rowHtml(id,true)).join('');}
+ if(likes.length){html+='<div class="sec">♥ 좋아요 ('+likes.length+')</div>'+likes.map(id=>rowHtml(id,false)).join('');}
  el.innerHTML=html;
- el.querySelectorAll('.rp').forEach(b=>b.onclick=()=>{const s=byId(b.dataset.id);playSound(s,false);});
- el.querySelectorAll('.rm').forEach(b=>b.onclick=()=>{delete state.v[b.dataset.id];save();renderLiked();renderSwipe();});
- const exp=document.getElementById('exp');if(exp)exp.onclick=exportJSON;
- const rst=document.getElementById('rst');if(rst)rst.onclick=()=>{if(confirm('모든 평가 초기화?')){localStorage.removeItem(LSK);location.reload();}};
- updatePlayUI();
-}
-function rowHtml(id,sup){const s=byId(id);const tg=(state.tags[id]||[]);return `<div class="row ${sup?'super':''}">
- <button class="rp" data-id="${id}">▶</button>
- <div class="rt"><div class="n">${s.title}</div><div class="m">${s.category} · ${s.bpm||'?'}BPM</div>${tg.length?'<div class="tg">'+tg.join(' · ')+'</div>':''}</div>
- <span class="mark">${sup?'★':'♥'}</span>
- <button class="rm" data-id="${id}">✕</button></div>`;}
-
-function exportJSON(){
- const out=state.order.filter(id=>state.v[id]).map(id=>{const s=byId(id);return {title:s.full,category:s.category,bpm:s.bpm,verdict:state.v[id],tags:state.tags[id]||[],suno:s.suno};});
- const blob=new Blob([JSON.stringify({exported:new Date().toISOString(),ratings:out},null,2)],{type:'application/json'});
- const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='soundswipe_ratings.json';a.click();
-}
-
-/* ---------- tabs ---------- */
-function tab(name){
- document.getElementById('tabSwipe').classList.toggle('on',name==='swipe');
- document.getElementById('tabLiked').classList.toggle('on',name==='liked');
- document.getElementById('swipe').classList.toggle('on',name==='swipe');
- document.getElementById('liked').classList.toggle('on',name==='liked');
- if(name==='liked')renderLiked();
-}
+ if(selMode){const bar=document.createElement('div');bar.className='fabbar';bar.innerHTML='<button class="fab" id="mkCombo" '+(selIds.length<2?'disabled':'')+'>이 '+selIds.length+'개로 조합 저장</button>';el.appendChild(bar);document.getElementById('mkCombo').onclick=makeCombo;}
+ el.querySelectorAll('.rp').forEach(b=>b.onclick=(e)=>{e.stopPropagation();if(selMode)return;playSound(byId(b.dataset.id),false);});
+ el.querySelectorAll('.rowmain').forEach(r=>r.onclick=()=>{if(!selMode)return;const id=r.dataset.id;const i=selIds.indexOf(id);if(i>=0)selIds.splice(i,1);else if(selIds.length<4)selIds.push(id);renderLiked();});
+ el.querySelectorAll('.rm').forEach(b=>b.onclick=(e)=>{e.stopPropagation();delete state.v[b.dataset.id];save();renderLiked();renderSwipe();});
+ const st=document.getElementById('selToggle');if(st)st.onclick=()=>{selMode=!selMode;selIds=[];renderLiked();};
+ const ex=document.getElementById('expLiked');if(ex)ex.onclick=exportJSON;updatePlayUI();}
+function rowHtml(id,sup){const s=byId(id);const tg=(state.tags[id]||[]);const sel=selIds.includes(id);
+ return '<div class="row '+(sup?'super':'')+' '+(sel?'sel':'')+' rowmain" data-id="'+id+'">'+(selMode?'<div class="chkbox '+(sel?'on':'')+'">'+(sel?'✓':'')+'</div>':'<button class="rp" data-id="'+id+'">▶</button>')+'<div class="rt"><div class="n">'+s.title+'</div><div class="m">'+s.category+' · '+(s.bpm||'?')+'BPM</div>'+(tg.length?'<div class="tg">'+tg.join(' · ')+'</div>':'')+'</div><span class="mark">'+(sup?'★':'♥')+'</span>'+(selMode?'':'<button class="rm" data-id="'+id+'">✕</button>')+'</div>';}
+function makeCombo(){if(selIds.length<2)return;state.combos.unshift({id:'c'+Date.now(),ids:selIds.slice(),works:0,unique:0,note:''});save();selMode=false;selIds=[];renderLiked();renderCombos();tab('combos');}
+function stopCombo(){comboAudios.forEach(a=>{try{a.pause()}catch(e){}});comboAudios=[];comboPlayingId=null;}
+function playCombo(combo){if(comboPlayingId===combo.id){stopCombo();renderCombos();return;}stopCombo();if(!au.paused)au.pause();combo.ids.forEach(id=>{const s=byId(id);if(!s)return;const a=new Audio(s.cdn);a.loop=true;a.volume=.9;a.dataset.id=id;a.play().catch(()=>{});comboAudios.push(a);});comboPlayingId=combo.id;renderCombos();}
+function toggleLayer(id){const a=comboAudios.find(x=>x.dataset.id===id);if(a)a.muted=!a.muted;renderCombos();}
+function renderCombos(){document.getElementById('comboCount').textContent=state.combos.length;const el=document.getElementById('combos');
+ let html='<div class="topbar"><div class="tbtn" style="cursor:default">조합 실험 · 좋아요 탭에서 2~4개 골라 만들기</div><button class="tbtn" id="expCombo">내보내기</button></div>';
+ if(!state.combos.length){html+='<div class="empty" style="position:static;margin-top:36px">아직 조합 없음.<br>좋아요 탭 → "＋ 조합 만들기"에서 소리 2~4개 골라봐.<br><span style="font-size:11px">(고기+사과 실험실: 겹쳐 듣고 되는지 평가)</span></div>';}
+ html+=state.combos.map(c=>comboHtml(c)).join('');
+ el.innerHTML=html;
+ el.querySelectorAll('.cb.play').forEach(b=>b.onclick=()=>playCombo(state.combos.find(c=>c.id===b.dataset.cid)));
+ el.querySelectorAll('.cb.del').forEach(b=>b.onclick=()=>{if(confirm('이 조합 삭제?')){state.combos=state.combos.filter(c=>c.id!==b.dataset.cid);save();stopCombo();renderCombos();}});
+ el.querySelectorAll('.mute').forEach(b=>b.onclick=()=>toggleLayer(b.dataset.id));
+ el.querySelectorAll('.rateset .s').forEach(s=>s.onclick=()=>{const c=state.combos.find(x=>x.id===s.dataset.cid);c[s.dataset.k]=+s.dataset.n;save();renderCombos();});
+ el.querySelectorAll('.cnote').forEach(t=>t.oninput=()=>{const c=state.combos.find(x=>x.id===t.dataset.cid);c.note=t.value;save();});
+ const ex=document.getElementById('expCombo');if(ex)ex.onclick=exportCombos;}
+function comboHtml(c){const playing=comboPlayingId===c.id;
+ const layers=c.ids.map(id=>{const s=byId(id);if(!s)return '';const a=comboAudios.find(x=>x.dataset.id===id);const muted=a&&a.muted;return '<div class="layer"><div class="ln">'+s.title+' · '+(s.bpm||'?')+'BPM · '+s.category+'</div>'+(playing?'<button class="mute '+(muted?'off':'')+'" data-id="'+id+'">'+(muted?'음소거':'ON')+'</button>':'')+'</div>';}).join('');
+ const stars=(k,val)=>'<div class="rateset '+(k==='unique'?'u':'')+'">'+[1,2,3,4,5].map(n=>'<span class="s '+(val>=n?'on':'')+'" data-cid="'+c.id+'" data-k="'+k+'" data-n="'+n+'">★</span>').join('')+'</div>';
+ return '<div class="combo"><h3>🍽 조합 ('+c.ids.length+'개)</h3><div class="stack">'+layers+'</div><div class="comborate"><span>되냐</span>'+stars('works',c.works)+'<span style="margin-left:8px">특이</span>'+stars('unique',c.unique)+'</div><input class="cnote" data-cid="'+c.id+'" placeholder="메모: 어떤 템포에서 되나 / 무슨 조합인가" value="'+(c.note||'').replace(/"/g,'&quot;')+'" style="width:100%;margin-top:8px;background:#0e0e12;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:8px;font-size:12px;font-family:inherit"/><div class="combobtns"><button class="cb play" data-cid="'+c.id+'">'+(playing?'■ 정지':'▶ 겹쳐 듣기')+'</button><button class="cb del" data-cid="'+c.id+'">삭제</button></div></div>';}
+function exportJSON(){const out=state.order.filter(id=>state.v[id]).map(id=>{const s=byId(id);return {title:s.full,category:s.category,bpm:s.bpm,verdict:state.v[id],tags:state.tags[id]||[],suno:s.suno};});dl('soundswipe_ratings.json',{exported:new Date().toISOString(),ratings:out});}
+function exportCombos(){const out=state.combos.map(c=>({sounds:c.ids.map(id=>{const s=byId(id);return s?{title:s.full,bpm:s.bpm,category:s.category}:null;}),works:c.works,unique:c.unique,note:c.note}));dl('soundswipe_combos.json',{exported:new Date().toISOString(),combos:out});}
+function dl(name,obj){const b=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();}
+function tab(name){['Swipe','Liked','Combos'].forEach(n=>{document.getElementById('tab'+n).classList.toggle('on',n.toLowerCase()===name);document.getElementById(n.toLowerCase()).classList.toggle('on',n.toLowerCase()===name);});document.getElementById('catbar').style.display=(name==='combos')?'none':'flex';if(name==='liked')renderLiked();if(name==='combos')renderCombos();}
 document.getElementById('tabSwipe').onclick=()=>tab('swipe');
 document.getElementById('tabLiked').onclick=()=>tab('liked');
-
+document.getElementById('tabCombos').onclick=()=>tab('combos');
 load();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 </script>
