@@ -133,13 +133,21 @@ let selMode=false, selIds=[], comboAudios=[], comboPlayingId=null;
 try{const r=localStorage.getItem(LSK);if(r)state={...state,...JSON.parse(r)};}catch(e){}
 try{const old=localStorage.getItem('soundswipe_v1');if(old&&!Object.keys(state.v).length){const o=JSON.parse(old);state.v=o.v||{};state.tags=o.tags||{};state.order=o.order||[];}}catch(e){}
 function save(){localStorage.setItem(LSK,JSON.stringify(state));}
+const SB_URL='https://tfoilkjyuzayxcedcmwo.supabase.co';
+const SB_KEY='sb_publishable_F4kidHmHAymbnwOWcK22dw_NkbNrNT4';
+const SBH={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+async function sbPushRating(id){const s=byId(id);try{await fetch(SB_URL+'/rest/v1/ss_ratings',{method:'POST',headers:{...SBH,'Prefer':'resolution=merge-duplicates'},body:JSON.stringify({sound_id:id,title:s?s.full:'',category:s?s.category:'',bpm:s?String(s.bpm||''):'',verdict:state.v[id],tags:state.tags[id]||[],updated_at:new Date().toISOString()})});}catch(e){}}
+async function sbDeleteRating(id){try{await fetch(SB_URL+'/rest/v1/ss_ratings?sound_id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:SBH});}catch(e){}}
+async function sbPushCombo(c){try{await fetch(SB_URL+'/rest/v1/ss_combos',{method:'POST',headers:{...SBH,'Prefer':'resolution=merge-duplicates'},body:JSON.stringify({id:c.id,sound_ids:c.ids,works:c.works,unique_score:c.unique,note:c.note||'',updated_at:new Date().toISOString()})});}catch(e){}}
+async function sbDeleteCombo(id){try{await fetch(SB_URL+'/rest/v1/ss_combos?id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:SBH});}catch(e){}}
+async function sbPull(){try{const r=await fetch(SB_URL+'/rest/v1/ss_ratings?select=*',{headers:SBH});if(r.ok){(await r.json()).forEach(x=>{state.v[x.sound_id]=x.verdict;if(x.tags)state.tags[x.sound_id]=x.tags;});}const rc=await fetch(SB_URL+'/rest/v1/ss_combos?select=*',{headers:SBH});if(rc.ok){const local=new Set(state.combos.map(c=>c.id));(await rc.json()).forEach(x=>{if(!local.has(x.id))state.combos.push({id:x.id,ids:x.sound_ids||[],works:x.works||0,unique:x.unique_score||0,note:x.note||''});});}save();}catch(e){}}
 async function load(){
  const res=await fetch('manifest.json?ts='+Date.now());
  const j=await res.json(); SOUNDS=j.sounds;
  if(!state.order.length) state.order=SOUNDS.map(s=>s.id);
  SOUNDS.forEach(s=>{if(!state.order.includes(s.id))state.order.push(s.id);});
  CATS=['전체',...Array.from(new Set(SOUNDS.map(s=>s.category)))];
- save(); renderCatbar(); renderSwipe(); renderLiked(); renderCombos();
+ await sbPull(); save(); renderCatbar(); renderSwipe(); renderLiked(); renderCombos();
 }
 function byId(id){return SOUNDS.find(s=>s.id===id);}
 function inFilter(s){return state.catFilter==='전체'||s.category===state.catFilter;}
@@ -161,8 +169,8 @@ function renderSwipe(){const wrap=document.getElementById('cardwrap');const q=qu
  card.querySelectorAll('.tag').forEach(b=>b.onclick=()=>{const t=b.dataset.t;const arr=state.tags[s.id]||[];const i=arr.indexOf(t);if(i>=0)arr.splice(i,1);else arr.push(t);state.tags[s.id]=arr;save();b.classList.toggle('on');});
  attachSwipe(card,s);updatePlayUI();}
 function flash(sym,color){const f=document.getElementById('flash');if(!f)return;f.textContent=sym;f.style.color=color;f.style.opacity='1';setTimeout(()=>{if(f)f.style.opacity='0';},260);}
-function verdict(v){const q=queue();if(!q.length)return;const s=byId(q[0]);state.v[s.id]=v;save();const map={allergy:['⚡','#ff5a5a'],dislike:['✕','#ff8a8a'],like:['♥','#c8fa46'],superlike:['★','#ffcf40']};flash(map[v][0],map[v][1]);renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},200);}
-function undo(){const done=state.order.filter(id=>state.v[id]);if(!done.length)return;delete state.v[done[done.length-1]];save();renderSwipe();renderLiked();}
+function verdict(v){const q=queue();if(!q.length)return;const s=byId(q[0]);state.v[s.id]=v;save();sbPushRating(s.id);const map={allergy:['⚡','#ff5a5a'],dislike:['✕','#ff8a8a'],like:['♥','#c8fa46'],superlike:['★','#ffcf40']};flash(map[v][0],map[v][1]);renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},200);}
+function undo(){const done=state.order.filter(id=>state.v[id]);if(!done.length)return;const _rm=done[done.length-1];delete state.v[_rm];save();sbDeleteRating(_rm);renderSwipe();renderLiked();}
 document.getElementById('bAllergy').onclick=()=>verdict('allergy');
 document.getElementById('bDislike').onclick=()=>verdict('dislike');
 document.getElementById('bLike').onclick=()=>verdict('like');
@@ -189,12 +197,12 @@ function renderLiked(){const supers=likedIds().filter(id=>state.v[id]==='superli
  if(selMode){const bar=document.createElement('div');bar.className='fabbar';bar.innerHTML='<button class="fab" id="mkCombo" '+(selIds.length<2?'disabled':'')+'>이 '+selIds.length+'개로 조합 저장</button>';el.appendChild(bar);document.getElementById('mkCombo').onclick=makeCombo;}
  el.querySelectorAll('.rp').forEach(b=>b.onclick=(e)=>{e.stopPropagation();if(selMode)return;playSound(byId(b.dataset.id),false);});
  el.querySelectorAll('.rowmain').forEach(r=>r.onclick=()=>{if(!selMode)return;const id=r.dataset.id;const i=selIds.indexOf(id);if(i>=0)selIds.splice(i,1);else if(selIds.length<4)selIds.push(id);renderLiked();});
- el.querySelectorAll('.rm').forEach(b=>b.onclick=(e)=>{e.stopPropagation();delete state.v[b.dataset.id];save();renderLiked();renderSwipe();});
+ el.querySelectorAll('.rm').forEach(b=>b.onclick=(e)=>{e.stopPropagation();delete state.v[b.dataset.id];save();sbDeleteRating(b.dataset.id);renderLiked();renderSwipe();});
  const st=document.getElementById('selToggle');if(st)st.onclick=()=>{selMode=!selMode;selIds=[];renderLiked();};
  const ex=document.getElementById('expLiked');if(ex)ex.onclick=exportJSON;updatePlayUI();}
 function rowHtml(id,sup){const s=byId(id);const tg=(state.tags[id]||[]);const sel=selIds.includes(id);
  return '<div class="row '+(sup?'super':'')+' '+(sel?'sel':'')+' rowmain" data-id="'+id+'">'+(selMode?'<div class="chkbox '+(sel?'on':'')+'">'+(sel?'✓':'')+'</div>':'<button class="rp" data-id="'+id+'">▶</button>')+'<div class="rt"><div class="n">'+s.title+'</div><div class="m">'+s.category+' · '+(s.bpm||'?')+'BPM</div>'+(tg.length?'<div class="tg">'+tg.join(' · ')+'</div>':'')+'</div><span class="mark">'+(sup?'★':'♥')+'</span>'+(selMode?'':'<button class="rm" data-id="'+id+'">✕</button>')+'</div>';}
-function makeCombo(){if(selIds.length<2)return;state.combos.unshift({id:'c'+Date.now(),ids:selIds.slice(),works:0,unique:0,note:''});save();selMode=false;selIds=[];renderLiked();renderCombos();tab('combos');}
+function makeCombo(){if(selIds.length<2)return;const _nc={id:'c'+Date.now(),ids:selIds.slice(),works:0,unique:0,note:''};state.combos.unshift(_nc);save();sbPushCombo(_nc);selMode=false;selIds=[];renderLiked();renderCombos();tab('combos');}
 function stopCombo(){comboAudios.forEach(a=>{try{a.pause()}catch(e){}});comboAudios=[];comboPlayingId=null;}
 function playCombo(combo){if(comboPlayingId===combo.id){stopCombo();renderCombos();return;}stopCombo();if(!au.paused)au.pause();combo.ids.forEach(id=>{const s=byId(id);if(!s)return;const a=new Audio(s.cdn);a.loop=true;a.volume=.9;a.dataset.id=id;a.play().catch(()=>{});comboAudios.push(a);});comboPlayingId=combo.id;renderCombos();}
 function toggleLayer(id){const a=comboAudios.find(x=>x.dataset.id===id);if(a)a.muted=!a.muted;renderCombos();}
@@ -204,10 +212,10 @@ function renderCombos(){document.getElementById('comboCount').textContent=state.
  html+=state.combos.map(c=>comboHtml(c)).join('');
  el.innerHTML=html;
  el.querySelectorAll('.cb.play').forEach(b=>b.onclick=()=>playCombo(state.combos.find(c=>c.id===b.dataset.cid)));
- el.querySelectorAll('.cb.del').forEach(b=>b.onclick=()=>{if(confirm('이 조합 삭제?')){state.combos=state.combos.filter(c=>c.id!==b.dataset.cid);save();stopCombo();renderCombos();}});
+ el.querySelectorAll('.cb.del').forEach(b=>b.onclick=()=>{if(confirm('이 조합 삭제?')){state.combos=state.combos.filter(c=>c.id!==b.dataset.cid);save();sbDeleteCombo(b.dataset.cid);stopCombo();renderCombos();}});
  el.querySelectorAll('.mute').forEach(b=>b.onclick=()=>toggleLayer(b.dataset.id));
- el.querySelectorAll('.rateset .s').forEach(s=>s.onclick=()=>{const c=state.combos.find(x=>x.id===s.dataset.cid);c[s.dataset.k]=+s.dataset.n;save();renderCombos();});
- el.querySelectorAll('.cnote').forEach(t=>t.oninput=()=>{const c=state.combos.find(x=>x.id===t.dataset.cid);c.note=t.value;save();});
+ el.querySelectorAll('.rateset .s').forEach(s=>s.onclick=()=>{const c=state.combos.find(x=>x.id===s.dataset.cid);c[s.dataset.k]=+s.dataset.n;save();sbPushCombo(c);renderCombos();});
+ el.querySelectorAll('.cnote').forEach(t=>t.oninput=()=>{const c=state.combos.find(x=>x.id===t.dataset.cid);c.note=t.value;save();clearTimeout(window.__noteT);window.__noteT=setTimeout(()=>sbPushCombo(c),700);});
  const ex=document.getElementById('expCombo');if(ex)ex.onclick=exportCombos;}
 function comboHtml(c){const playing=comboPlayingId===c.id;
  const layers=c.ids.map(id=>{const s=byId(id);if(!s)return '';const a=comboAudios.find(x=>x.dataset.id===id);const muted=a&&a.muted;return '<div class="layer"><div class="ln">'+s.title+' · '+(s.bpm||'?')+'BPM · '+s.category+'</div>'+(playing?'<button class="mute '+(muted?'off':'')+'" data-id="'+id+'">'+(muted?'음소거':'ON')+'</button>':'')+'</div>';}).join('');
