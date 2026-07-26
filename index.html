@@ -65,7 +65,7 @@ main{flex:1;position:relative;overflow:hidden}
 .hint{font-size:11px;color:var(--dim2);text-align:center;padding-bottom:4px}
 .flash{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font-size:60px;font-weight:900;opacity:0;pointer-events:none;transition:opacity .12s}
 .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--dim);text-align:center;padding:30px}
-#liked,#combos{overflow-y:auto;padding:6px 14px 30px}
+#liked,#combos,#recent{overflow-y:auto;padding:6px 14px 30px}
 .topbar{position:sticky;top:0;background:var(--bg);padding:6px 0 8px;display:flex;gap:8px;z-index:5}
 .tbtn{flex:1;background:var(--bg2);border:1px solid var(--line);color:var(--dim);border-radius:10px;padding:9px;font-weight:700;font-size:12px}
 .tbtn.act1{background:var(--lime);color:#0b0b0d;border-color:var(--lime)}
@@ -108,6 +108,7 @@ audio{display:none}
  <div class="tabbtns">
   <button class="tabbtn on" id="tabSwipe">스와이프</button>
   <button class="tabbtn" id="tabLiked">좋아요 <span class="badge" id="likedCount">0</span></button>
+  <button class="tabbtn" id="tabRecent">최근</button>
   <button class="tabbtn" id="tabCombos">조합 <span class="badge" id="comboCount">0</span></button>
  </div>
 </div>
@@ -124,6 +125,7 @@ audio{display:none}
   <div class="hint">느낌·멜로디·DNA 톡(선택) → <b style="color:var(--lime)">1~10 점수</b> 누르면 다음 곱. (8이상=좋아요, 5이하=별로)</div>
  </section>
  <section class="view" id="liked"></section>
+ <section class="view" id="recent"></section>
  <section class="view" id="combos"></section>
 </main>
 <audio id="au" playsinline></audio>
@@ -150,12 +152,14 @@ async function load(){
  let base=[];
  try{const res=await fetch('manifest.json?ts='+Date.now());const j=await res.json();base=j.sounds||[];}catch(e){}
  // merge live sounds from Supabase (auto-added by the generator, no redeploy needed)
- try{const r=await fetch(SB_URL+'/rest/v1/ss_sounds?select=*&order=created_at.asc',{headers:SBH});if(r.ok){const live=await r.json();const seen=new Set(base.map(s=>s.id));live.forEach(s=>{if(!seen.has(s.id)){seen.add(s.id);base.push({id:s.id,title:s.title,full:s.full_name,category:s.category,instrument:s.instrument,bpm:s.bpm,batch:s.batch,prompt:s.prompt,cdn:s.cdn,suno:s.suno});}});}}catch(e){}
+ // Important: newest generated sounds must appear first on the phone.
+ try{const r=await fetch(SB_URL+'/rest/v1/ss_sounds?select=*&order=created_at.desc',{headers:SBH});if(r.ok){const live=await r.json();const by=new Map(base.map(s=>[s.id,s]));live.forEach(s=>{by.set(s.id,{...(by.get(s.id)||{}),id:s.id,title:s.title,full:s.full_name,category:s.category,instrument:s.instrument,bpm:s.bpm,batch:s.batch,prompt:s.prompt,cdn:s.cdn,suno:s.suno,created_at:s.created_at});});base=Array.from(by.values()).sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||'')));}}catch(e){}
  SOUNDS=base;
- if(!state.order.length) state.order=SOUNDS.map(s=>s.id);
- SOUNDS.forEach(s=>{if(!state.order.includes(s.id))state.order.push(s.id);});
+ // Rebuild display order every load so newly generated, unrated sounds surface immediately.
+ // Ratings stay in state.v, so old rated sounds remain skipped by queue().
+ state.order=SOUNDS.map(s=>s.id);
  CATS=['전체',...Array.from(new Set(SOUNDS.map(s=>s.category)))];
- await sbPull(); save(); renderCatbar(); renderSwipe(); renderLiked(); renderCombos();
+ await sbPull(); save(); renderCatbar(); renderSwipe(); renderLiked(); renderRecent(); renderCombos();
 }
 function byId(id){return SOUNDS.find(s=>s.id===id);}
 function inFilter(s){return state.catFilter==='전체'||s.category===state.catFilter;}
@@ -211,6 +215,13 @@ function renderLiked(){const supers=likedIds().filter(id=>state.v[id]==='superli
  const ex=document.getElementById('expLiked');if(ex)ex.onclick=exportJSON;updatePlayUI();}
 function rowHtml(id,sup){const s=byId(id);const tg=(state.tags[id]||[]);const sel=selIds.includes(id);
  return '<div class="row '+(sup?'super':'')+' '+(sel?'sel':'')+' rowmain" data-id="'+id+'">'+(selMode?'<div class="chkbox '+(sel?'on':'')+'">'+(sel?'✓':'')+'</div>':'<button class="rp" data-id="'+id+'">▶</button>')+'<div class="rt"><div class="n">'+s.title+'</div><div class="m">'+s.category+' · '+(s.bpm||'?')+'BPM</div>'+(tg.length?'<div class="tg">'+tg.join(' · ')+'</div>':'')+'</div><span class="mark">'+(sup?'★':'♥')+'</span>'+(selMode?'':'<button class="rm" data-id="'+id+'">✕</button>')+'</div>';}
+function renderRecent(){const el=document.getElementById('recent');const ids=state.order.filter(id=>{const s=byId(id);return s&&inFilter(s);}).slice(0,50);
+ let html='<div class="topbar"><div class="tbtn" style="cursor:default">최근 생성 50개 · 평가된 것도 표시</div></div>';
+ if(!ids.length){html+='<div class="empty" style="position:static;margin-top:36px">최근 사운드 없음.</div>';}
+ html+=ids.map(id=>recentRowHtml(id)).join('');el.innerHTML=html;
+ el.querySelectorAll('.rp').forEach(b=>b.onclick=(e)=>{e.stopPropagation();playSound(byId(b.dataset.id),false);});updatePlayUI();}
+function recentRowHtml(id){const s=byId(id);const v=state.v[id]||'미평가';const r=state.rating[id]||'';const m=state.melody[id]||'';const d=state.dna[id]||'';const mark=v==='superlike'?'★':(v==='like'?'♥':(v==='dislike'?'✕':(v==='allergy'?'⚡':'·')));const cls=v==='superlike'?'super':'';const meta=[s.category+' · '+(s.bpm||'?')+'BPM',r?('점수 '+r):'',v,m,d].filter(Boolean).join(' · ');
+ return '<div class="row '+cls+'"><button class="rp" data-id="'+id+'">▶</button><div class="rt"><div class="n">'+s.title+'</div><div class="m">'+meta+'</div>'+(s.created_at?'<div class="tg">'+new Date(s.created_at).toLocaleString('ko-KR')+'</div>':'')+'</div><span class="mark">'+mark+'</span></div>';}
 function makeCombo(){if(selIds.length<2)return;const _nc={id:'c'+Date.now(),ids:selIds.slice(),works:0,unique:0,note:''};state.combos.unshift(_nc);save();sbPushCombo(_nc);selMode=false;selIds=[];renderLiked();renderCombos();tab('combos');}
 function stopCombo(){comboAudios.forEach(a=>{try{a.pause()}catch(e){}});comboAudios=[];comboPlayingId=null;}
 function playCombo(combo){if(comboPlayingId===combo.id){stopCombo();renderCombos();return;}stopCombo();if(!au.paused)au.pause();combo.ids.forEach(id=>{const s=byId(id);if(!s)return;const a=new Audio(s.cdn);a.loop=true;a.volume=.9;a.dataset.id=id;a.play().catch(()=>{});comboAudios.push(a);});comboPlayingId=combo.id;renderCombos();}
@@ -234,9 +245,10 @@ function exportJSON(){const out=state.order.filter(id=>state.v[id]).map(id=>{con
 function exportCombos(){const out=state.combos.map(c=>({sounds:c.ids.map(id=>{const s=byId(id);return s?{title:s.full,bpm:s.bpm,category:s.category}:null;}),works:c.works,unique:c.unique,note:c.note}));dl('soundswipe_combos.json',{exported:new Date().toISOString(),combos:out});}
 function dl(name,obj){const b=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();}
 function showInfo(){alert('최소 작곡단위란?\n\n혼자서는 완성곡이 아니지만, 곡 안에 넣으면 하나의 역할을 하는 짧은 소리 조각입니다.\n\n예:\n· 몸이 움직이는 리듬\n· 낮게 받쳐주는 베이스\n· 기억에 남는 짧은 리프\n· 긴장을 만드는 소리\n· 확 커지는 소리\n· 갑자기 전환시키는 충격음\n· 공간감을 만드는 잔향\n· 사람 느낌을 주는 숨소리·손맛\n· 곡의 얼굴이 될 특이한 소리\n\n정답을 고르려 하지 말고, 듣자마자 가장 가까운 느낌 하나만 고르세요.');}
-function tab(name){['Swipe','Liked','Combos'].forEach(n=>{document.getElementById('tab'+n).classList.toggle('on',n.toLowerCase()===name);document.getElementById(n.toLowerCase()).classList.toggle('on',n.toLowerCase()===name);});document.getElementById('catbar').style.display=(name==='combos')?'none':'flex';if(name==='liked')renderLiked();if(name==='combos')renderCombos();}
+function tab(name){['Swipe','Liked','Recent','Combos'].forEach(n=>{document.getElementById('tab'+n).classList.toggle('on',n.toLowerCase()===name);document.getElementById(n.toLowerCase()).classList.toggle('on',n.toLowerCase()===name);});document.getElementById('catbar').style.display=(name==='combos')?'none':'flex';if(name==='liked')renderLiked();if(name==='recent')renderRecent();if(name==='combos')renderCombos();}
 document.getElementById('tabSwipe').onclick=()=>tab('swipe');
 document.getElementById('tabLiked').onclick=()=>tab('liked');
+document.getElementById('tabRecent').onclick=()=>tab('recent');
 document.getElementById('tabCombos').onclick=()=>tab('combos');
 load();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
