@@ -81,6 +81,7 @@ main{flex:1;position:relative;overflow:hidden}
 .row .rt .tg{font-size:10px;color:var(--lime);margin-top:2px}
 .row .mark{font-size:15px;flex-shrink:0}
 .row .rm{background:none;border:none;color:var(--dim2);font-size:16px;padding:4px}
+.row .review{background:var(--lime);border:none;color:#0b0b0d;font-size:11px;font-weight:800;padding:7px 9px;border-radius:8px;flex-shrink:0}
 .chkbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#0b0b0d}
 .chkbox.on{background:var(--lime);border-color:var(--lime)}
 .fabbar{position:sticky;bottom:0;background:linear-gradient(#0b0b0d00,#0b0b0d 30%);padding:12px 0 4px;display:flex;gap:8px}
@@ -135,7 +136,7 @@ const FEELINGS=[['몸이 움직임','Pulse'],['낮게 받쳐줌','Ground'],['기
 const TAGS=FEELINGS.map(f=>f[0]);
 const ROLEMAP=Object.fromEntries(FEELINGS);
 const LSK='soundswipe_v2';
-let SOUNDS=[], CATS=[], state={v:{},tags:{},notes:{},rating:{},melody:{},dna:{},order:[],combos:[],catFilter:'전체'}, au=document.getElementById('au'), curId=null, seekPt=0;
+let SOUNDS=[], CATS=[], state={v:{},tags:{},notes:{},rating:{},melody:{},dna:{},order:[],combos:[],catFilter:'전체'}, au=document.getElementById('au'), curId=null, seekPt=0, reviewId=null;
 let selMode=false, selIds=[], comboAudios=[], comboPlayingId=null;
 try{const r=localStorage.getItem(LSK);if(r)state={...state,...JSON.parse(r)};}catch(e){}
 try{const old=localStorage.getItem('soundswipe_v1');if(old&&!Object.keys(state.v).length){const o=JSON.parse(old);state.v=o.v||{};state.tags=o.tags||{};state.order=o.order||[];}}catch(e){}
@@ -147,7 +148,7 @@ async function sbPushRating(id){const s=byId(id);try{await fetch(SB_URL+'/rest/v
 async function sbDeleteRating(id){try{await fetch(SB_URL+'/rest/v1/ss_ratings?sound_id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:SBH});}catch(e){}}
 async function sbPushCombo(c){try{await fetch(SB_URL+'/rest/v1/ss_combos',{method:'POST',headers:{...SBH,'Prefer':'resolution=merge-duplicates'},body:JSON.stringify({id:c.id,sound_ids:c.ids,works:c.works,unique_score:c.unique,note:c.note||'',updated_at:new Date().toISOString()})});}catch(e){}}
 async function sbDeleteCombo(id){try{await fetch(SB_URL+'/rest/v1/ss_combos?id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:SBH});}catch(e){}}
-async function sbPull(){try{const r=await fetch(SB_URL+'/rest/v1/ss_ratings?select=*',{headers:SBH});if(r.ok){(await r.json()).forEach(x=>{state.v[x.sound_id]=x.verdict;if(x.tags)state.tags[x.sound_id]=x.tags;});}const rc=await fetch(SB_URL+'/rest/v1/ss_combos?select=*',{headers:SBH});if(rc.ok){const local=new Set(state.combos.map(c=>c.id));(await rc.json()).forEach(x=>{if(!local.has(x.id))state.combos.push({id:x.id,ids:x.sound_ids||[],works:x.works||0,unique:x.unique_score||0,note:x.note||''});});}save();}catch(e){}}
+async function sbPull(){try{const r=await fetch(SB_URL+'/rest/v1/ss_ratings?select=*',{headers:SBH});if(r.ok){(await r.json()).forEach(x=>{state.v[x.sound_id]=x.verdict;if(x.tags)state.tags[x.sound_id]=x.tags;if(x.rating10!=null)state.rating[x.sound_id]=Number(x.rating10);if(x.melody_judgment!=null)state.melody[x.sound_id]=x.melody_judgment;if(x.dna_fit!=null)state.dna[x.sound_id]=x.dna_fit;if(x.note!=null)state.notes[x.sound_id]=x.note;});}const rc=await fetch(SB_URL+'/rest/v1/ss_combos?select=*',{headers:SBH});if(rc.ok){const local=new Set(state.combos.map(c=>c.id));(await rc.json()).forEach(x=>{if(!local.has(x.id))state.combos.push({id:x.id,ids:x.sound_ids||[],works:x.works||0,unique:x.unique_score||0,note:x.note||''});});}save();}catch(e){}}
 async function load(){
  let base=[];
  try{const res=await fetch('manifest.json?ts='+Date.now());const j=await res.json();base=j.sounds||[];}catch(e){}
@@ -163,14 +164,14 @@ async function load(){
 }
 function byId(id){return SOUNDS.find(s=>s.id===id);}
 function inFilter(s){return state.catFilter==='전체'||s.category===state.catFilter;}
-function queue(){return state.order.filter(id=>{const s=byId(id);return s&&!state.v[id]&&inFilter(s);});}
+function queue(){if(reviewId){const s=byId(reviewId);if(s&&inFilter(s))return [reviewId];}return state.order.filter(id=>{const s=byId(id);return s&&!state.v[id]&&inFilter(s);});}
 function renderCatbar(){const bar=document.getElementById('catbar');bar.innerHTML='';CATS.forEach(c=>{const b=document.createElement('button');b.className='cchip'+(state.catFilter===c?' on':'');b.textContent=c;b.onclick=()=>{state.catFilter=c;save();renderCatbar();renderSwipe();renderLiked();};bar.appendChild(b);});}
 function playSound(s,fromDrop){stopCombo();if(curId===s.id&&!au.paused){au.pause();updatePlayUI();return;}if(curId!==s.id){au.src=s.cdn;curId=s.id;}const target=fromDrop?CDN_SEEK.drop:seekPt;const go=()=>{try{au.currentTime=target;}catch(e){}au.play().catch(()=>{});updatePlayUI();};if(au.readyState>=1)go();else au.addEventListener('loadedmetadata',go,{once:true});}
 function updatePlayUI(){document.querySelectorAll('.bigplay').forEach(b=>b.classList.toggle('playing',curId&&!au.paused));document.querySelectorAll('.row .rp').forEach(b=>b.classList.toggle('playing',b.dataset.id===curId&&!au.paused));}
 au.addEventListener('timeupdate',()=>{const sk=document.getElementById('seek');if(sk&&au.duration){sk.value=(au.currentTime/au.duration*100)||0;const c=document.getElementById('ct');if(c)c.textContent=fmt(au.currentTime);}});
 au.addEventListener('play',updatePlayUI);au.addEventListener('pause',updatePlayUI);
 function fmt(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
-function renderSwipe(){const wrap=document.getElementById('cardwrap');const q=queue();const total=state.order.filter(id=>{const s=byId(id);return s&&inFilter(s);}).length;document.getElementById('prog').textContent=q.length?((total-q.length+1)+' / '+total+(state.catFilter!=='전체'?' · '+state.catFilter:'')):'완료!';wrap.innerHTML='';
+function renderSwipe(){const wrap=document.getElementById('cardwrap');const q=queue();const total=state.order.filter(id=>{const s=byId(id);return s&&inFilter(s);}).length;document.getElementById('prog').textContent=reviewId?'다시 평가':(q.length?((total-q.length+1)+' / '+total+(state.catFilter!=='전체'?' · '+state.catFilter:'')):'완료!');wrap.innerHTML='';
  if(!q.length){wrap.innerHTML='<div class="empty"><div style="font-size:40px">✓</div><div>이 카테고리는 다 봤어.<br>다른 카테고리 고르거나 좋아요/조합 탭으로.</div></div>';return;}
  const s=byId(q[0]);const stags=state.tags[s.id]||[];const card=document.createElement('div');card.className='card';card.id='topcard';
  card.innerHTML='<div class="cat">'+s.category+(s.bpm?' · '+s.bpm+'BPM':'')+'</div><div class="ttl">'+s.title+'</div><div class="meta">'+(s.instrument?s.instrument+' · ':'')+'제스처 고정 · 음색 평가'+'</div><div class="playrow"><button class="bigplay" id="bp">▶</button><div class="seekwrap"><input type="range" class="seek" id="seek" min="0" max="100" value="0"/><div class="seekmeta"><span id="ct">0:00</span><button class="jump" id="jd">→ 드롭 45s</button></div></div></div><div class="tags" id="tagrow">'+TAGS.map(t=>'<button class="tag '+(stags.includes(t)?'on':'')+'" data-t="'+t+'">'+t+'</button>').join('')+'</div>'+'<div class="mlabel">멜로디</div><div class="tags">'+['곡 될 듯','멜로디 좋음','감정 좋음','제너릭함','멜로디 없음'].map(m=>'<button class="chip2 mj '+(state.melody[s.id]===m?'on':'')+'" data-m="'+m+'">'+m+'</button>').join('')+'</div>'+'<div class="mlabel">내 DNA</div><div class="tags">'+['맞음','애매함','안 맞음'].map(d=>'<button class="chip2 dn '+(state.dna[s.id]===d?'on':'')+'" data-d="'+d+'">'+d+'</button>').join('')+'</div>'+'<div class="mlabel">점수 (선택)</div><div class="rrow">'+[1,2,3,4,5,6,7,8,9,10].map(n=>'<button class="rpill '+(state.rating[s.id]===n?'on':'')+'" data-r="'+n+'">'+n+'</button>').join('')+'</div>'+'<input class="noteinput" placeholder="메모: 곡 될 듯 / 제너릭 / 기타 좋음 …" value="'+(((state.notes&&state.notes[s.id])||'').replace(/"/g,'&quot;'))+'" style="width:100%;background:#0e0e12;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:7px 9px;font-size:12px;font-family:inherit;margin-top:2px"/><div class="prompt">'+s.prompt+'</div><div class="flash" id="flash"></div>';
@@ -188,7 +189,7 @@ function flash(sym,color){const f=document.getElementById('flash');if(!f)return;
 function verdict(v){const q=queue();if(!q.length)return;const s=byId(q[0]);state.v[s.id]=v;save();sbPushRating(s.id);const map={allergy:['⚡','#ff5a5a'],dislike:['✕','#ff8a8a'],like:['♥','#c8fa46'],superlike:['★','#ffcf40']};flash(map[v][0],map[v][1]);renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},200);}
 function undo(){const done=state.order.filter(id=>state.v[id]);if(!done.length)return;const _rm=done[done.length-1];delete state.v[_rm];save();sbDeleteRating(_rm);renderSwipe();renderLiked();}
 document.getElementById('bUndo').onclick=undo;
-function rateNext(n){const q=queue();if(!q.length)return;const s=byId(q[0]);state.rating[s.id]=n;state.v[s.id]=n>=8?'superlike':(n>=6?'like':(n>=3?'dislike':'allergy'));save();sbPushRating(s.id);flash(String(n),n>=6?'#c8fa46':(n>=3?'#ff8a8a':'#ff5a5a'));renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},180);}
+function rateNext(n){const q=queue();if(!q.length)return;const s=byId(q[0]);const wasReview=reviewId===s.id;state.rating[s.id]=n;state.v[s.id]=n>=8?'superlike':(n>=6?'like':(n>=3?'dislike':'allergy'));reviewId=null;save();sbPushRating(s.id);flash(String(n),n>=6?'#c8fa46':(n>=3?'#ff8a8a':'#ff5a5a'));renderLiked();setTimeout(()=>{if(wasReview){au.pause();tab('recent');}else{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();}},180);}
 function attachSwipe(card,s){let sx=0,sy=0,dx=0,dy=0,drag=false;
  card.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;drag=true;},{passive:true});
  card.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];dx=t.clientX-sx;dy=t.clientY-sy;card.style.transform='translate('+dx+'px,'+dy+'px) rotate('+(dx/20)+'deg)';card.style.opacity=1-Math.min(Math.abs(dx),Math.abs(dy))/400;},{passive:true});
@@ -216,12 +217,13 @@ function renderLiked(){const supers=likedIds().filter(id=>state.v[id]==='superli
 function rowHtml(id,sup){const s=byId(id);const tg=(state.tags[id]||[]);const sel=selIds.includes(id);
  return '<div class="row '+(sup?'super':'')+' '+(sel?'sel':'')+' rowmain" data-id="'+id+'">'+(selMode?'<div class="chkbox '+(sel?'on':'')+'">'+(sel?'✓':'')+'</div>':'<button class="rp" data-id="'+id+'">▶</button>')+'<div class="rt"><div class="n">'+s.title+'</div><div class="m">'+s.category+' · '+(s.bpm||'?')+'BPM</div>'+(tg.length?'<div class="tg">'+tg.join(' · ')+'</div>':'')+'</div><span class="mark">'+(sup?'★':'♥')+'</span>'+(selMode?'':'<button class="rm" data-id="'+id+'">✕</button>')+'</div>';}
 function renderRecent(){const el=document.getElementById('recent');const ids=state.order.filter(id=>{const s=byId(id);return s&&inFilter(s);}).slice(0,50);
- let html='<div class="topbar"><div class="tbtn" style="cursor:default">최근 생성 50개 · 평가된 것도 표시</div></div>';
+ let html='<div class="topbar"><div class="tbtn" style="cursor:default">최근 생성 50개 · 재생 후 평가 버튼으로 1~10</div></div>';
  if(!ids.length){html+='<div class="empty" style="position:static;margin-top:36px">최근 사운드 없음.</div>';}
  html+=ids.map(id=>recentRowHtml(id)).join('');el.innerHTML=html;
- el.querySelectorAll('.rp').forEach(b=>b.onclick=(e)=>{e.stopPropagation();playSound(byId(b.dataset.id),false);});updatePlayUI();}
+ el.querySelectorAll('.rp').forEach(b=>b.onclick=(e)=>{e.stopPropagation();playSound(byId(b.dataset.id),false);});
+ el.querySelectorAll('.review').forEach(b=>b.onclick=(e)=>{e.stopPropagation();reviewId=b.dataset.id;tab('swipe');renderSwipe();const s=byId(reviewId);if(s)playSound(s,false);});updatePlayUI();}
 function recentRowHtml(id){const s=byId(id);const v=state.v[id]||'미평가';const r=state.rating[id]||'';const m=state.melody[id]||'';const d=state.dna[id]||'';const mark=v==='superlike'?'★':(v==='like'?'♥':(v==='dislike'?'✕':(v==='allergy'?'⚡':'·')));const cls=v==='superlike'?'super':'';const meta=[s.category+' · '+(s.bpm||'?')+'BPM',r?('점수 '+r):'',v,m,d].filter(Boolean).join(' · ');
- return '<div class="row '+cls+'"><button class="rp" data-id="'+id+'">▶</button><div class="rt"><div class="n">'+s.title+'</div><div class="m">'+meta+'</div>'+(s.created_at?'<div class="tg">'+new Date(s.created_at).toLocaleString('ko-KR')+'</div>':'')+'</div><span class="mark">'+mark+'</span></div>';}
+ return '<div class="row '+cls+'"><button class="rp" data-id="'+id+'">▶</button><div class="rt"><div class="n">'+s.title+'</div><div class="m">'+meta+'</div>'+(s.created_at?'<div class="tg">'+new Date(s.created_at).toLocaleString('ko-KR')+'</div>':'')+'</div><span class="mark">'+mark+'</span><button class="review" data-id="'+id+'">평가</button></div>';}
 function makeCombo(){if(selIds.length<2)return;const _nc={id:'c'+Date.now(),ids:selIds.slice(),works:0,unique:0,note:''};state.combos.unshift(_nc);save();sbPushCombo(_nc);selMode=false;selIds=[];renderLiked();renderCombos();tab('combos');}
 function stopCombo(){comboAudios.forEach(a=>{try{a.pause()}catch(e){}});comboAudios=[];comboPlayingId=null;}
 function playCombo(combo){if(comboPlayingId===combo.id){stopCombo();renderCombos();return;}stopCombo();if(!au.paused)au.pause();combo.ids.forEach(id=>{const s=byId(id);if(!s)return;const a=new Audio(s.cdn);a.loop=true;a.volume=.9;a.dataset.id=id;a.play().catch(()=>{});comboAudios.push(a);});comboPlayingId=combo.id;renderCombos();}
@@ -246,7 +248,7 @@ function exportCombos(){const out=state.combos.map(c=>({sounds:c.ids.map(id=>{co
 function dl(name,obj){const b=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();}
 function showInfo(){alert('최소 작곡단위란?\n\n혼자서는 완성곡이 아니지만, 곡 안에 넣으면 하나의 역할을 하는 짧은 소리 조각입니다.\n\n예:\n· 몸이 움직이는 리듬\n· 낮게 받쳐주는 베이스\n· 기억에 남는 짧은 리프\n· 긴장을 만드는 소리\n· 확 커지는 소리\n· 갑자기 전환시키는 충격음\n· 공간감을 만드는 잔향\n· 사람 느낌을 주는 숨소리·손맛\n· 곡의 얼굴이 될 특이한 소리\n\n정답을 고르려 하지 말고, 듣자마자 가장 가까운 느낌 하나만 고르세요.');}
 function tab(name){['Swipe','Liked','Recent','Combos'].forEach(n=>{document.getElementById('tab'+n).classList.toggle('on',n.toLowerCase()===name);document.getElementById(n.toLowerCase()).classList.toggle('on',n.toLowerCase()===name);});document.getElementById('catbar').style.display=(name==='combos')?'none':'flex';if(name==='liked')renderLiked();if(name==='recent')renderRecent();if(name==='combos')renderCombos();}
-document.getElementById('tabSwipe').onclick=()=>tab('swipe');
+document.getElementById('tabSwipe').onclick=()=>{reviewId=null;tab('swipe');renderSwipe();};
 document.getElementById('tabLiked').onclick=()=>tab('liked');
 document.getElementById('tabRecent').onclick=()=>tab('recent');
 document.getElementById('tabCombos').onclick=()=>tab('combos');
