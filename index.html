@@ -117,15 +117,11 @@ audio{display:none}
  <section class="view on" id="swipe">
   <div class="progress" id="prog"></div>
   <div class="cardwrap" id="cardwrap"></div>
-  <div class="actlabels"><span>알러지</span><span>싫어</span><span></span><span>좋아</span><span>수퍼</span></div>
+  <div style="text-align:center;font-size:11px;color:var(--dim2);padding:2px 0 4px">점수를 누르면 다음 곱 →</div>
   <div class="actions">
-   <button class="act small a-allergy" id="bAllergy">⚡</button>
-   <button class="act small a-dislike" id="bDislike">✕</button>
-   <button class="act small a-undo" id="bUndo">↩</button>
-   <button class="act big a-like" id="bLike">♥</button>
-   <button class="act big a-super" id="bSuper">★</button>
+   <button id="bUndo" style="background:var(--bg2);border:1px solid var(--line);color:var(--dim);padding:9px 20px;border-radius:999px;font-size:13px;font-weight:700">↩ 되돌리기</button>
   </div>
-  <div class="hint">느낌 버튼 먼저 톡 → 스와이프로 판정 (← 싫어 / → 좋아 / ↑ 수퍼 / ↓ 알러지)</div>
+  <div class="hint">느낌·멜로디·DNA 톡(선택) → <b style="color:var(--lime)">1~10 점수</b> 누르면 다음 곱. (8이상=좋아요, 5이하=별로)</div>
  </section>
  <section class="view" id="liked"></section>
  <section class="view" id="combos"></section>
@@ -181,17 +177,14 @@ function renderSwipe(){const wrap=document.getElementById('cardwrap');const q=qu
  card.querySelectorAll('.tag').forEach(b=>b.onclick=()=>{const t=b.dataset.t;const arr=state.tags[s.id]||[];const i=arr.indexOf(t);if(i>=0)arr.splice(i,1);else arr.push(t);state.tags[s.id]=arr;save();b.classList.toggle('on');});
  card.querySelectorAll('.mj').forEach(b=>b.onclick=(e)=>{e.stopPropagation();state.melody[s.id]=(state.melody[s.id]===b.dataset.m)?'':b.dataset.m;save();card.querySelectorAll('.mj').forEach(x=>x.classList.toggle('on',x.dataset.m===state.melody[s.id]));});
  card.querySelectorAll('.dn').forEach(b=>b.onclick=(e)=>{e.stopPropagation();state.dna[s.id]=(state.dna[s.id]===b.dataset.d)?'':b.dataset.d;save();card.querySelectorAll('.dn').forEach(x=>x.classList.toggle('on',x.dataset.d===state.dna[s.id]));});
- card.querySelectorAll('.rpill').forEach(b=>b.onclick=(e)=>{e.stopPropagation();state.rating[s.id]=+b.dataset.r;save();card.querySelectorAll('.rpill').forEach(x=>x.classList.toggle('on',+x.dataset.r===state.rating[s.id]));});
+ card.querySelectorAll('.rpill').forEach(b=>b.onclick=(e)=>{e.stopPropagation();rateNext(+b.dataset.r);});
  const _ni=card.querySelector('.noteinput');if(_ni){_ni.onclick=(e)=>e.stopPropagation();_ni.oninput=()=>{state.notes[s.id]=_ni.value;save();};}
- attachSwipe(card,s);updatePlayUI();}
+ updatePlayUI();}
 function flash(sym,color){const f=document.getElementById('flash');if(!f)return;f.textContent=sym;f.style.color=color;f.style.opacity='1';setTimeout(()=>{if(f)f.style.opacity='0';},260);}
 function verdict(v){const q=queue();if(!q.length)return;const s=byId(q[0]);state.v[s.id]=v;save();sbPushRating(s.id);const map={allergy:['⚡','#ff5a5a'],dislike:['✕','#ff8a8a'],like:['♥','#c8fa46'],superlike:['★','#ffcf40']};flash(map[v][0],map[v][1]);renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},200);}
 function undo(){const done=state.order.filter(id=>state.v[id]);if(!done.length)return;const _rm=done[done.length-1];delete state.v[_rm];save();sbDeleteRating(_rm);renderSwipe();renderLiked();}
-document.getElementById('bAllergy').onclick=()=>verdict('allergy');
-document.getElementById('bDislike').onclick=()=>verdict('dislike');
-document.getElementById('bLike').onclick=()=>verdict('like');
-document.getElementById('bSuper').onclick=()=>verdict('superlike');
 document.getElementById('bUndo').onclick=undo;
+function rateNext(n){const q=queue();if(!q.length)return;const s=byId(q[0]);state.rating[s.id]=n;state.v[s.id]=n>=8?'superlike':(n>=6?'like':(n>=3?'dislike':'allergy'));save();sbPushRating(s.id);flash(String(n),n>=6?'#c8fa46':(n>=3?'#ff8a8a':'#ff5a5a'));renderLiked();setTimeout(()=>{renderSwipe();const nq=queue();if(nq.length)playSound(byId(nq[0]),false);else au.pause();},180);}
 function attachSwipe(card,s){let sx=0,sy=0,dx=0,dy=0,drag=false;
  card.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;drag=true;},{passive:true});
  card.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];dx=t.clientX-sx;dy=t.clientY-sy;card.style.transform='translate('+dx+'px,'+dy+'px) rotate('+(dx/20)+'deg)';card.style.opacity=1-Math.min(Math.abs(dx),Math.abs(dy))/400;},{passive:true});
