@@ -1,0 +1,25 @@
+name: Import Freesound Prompt DNA
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit_per_query:
+        description: 'How many Freesound results per query'
+        required: false
+        default: '5'
+      dry_run:
+        description: 'true = do not write to Supabase'
+        required: false
+        default: 'true'
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Freesound importer
+        env:
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+          LIMIT_PER_QUERY: ${{ github.event.inputs.limit_per_query || '5' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'true' }}
+        run: python3 import_freesound_dna.py
