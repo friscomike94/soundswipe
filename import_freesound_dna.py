@@ -8,7 +8,7 @@ API='https://freesound.org/apiv2/search/text/'
 KEY=os.environ.get('FREESOUND_API_KEY','').strip()
 LIMIT=int(os.environ.get('LIMIT_PER_QUERY') or '8')
 DRY=(os.environ.get('DRY_RUN','false').lower()=='true')
-MAX_ROWS=int(os.environ.get('MAX_ROWS') or '800')
+MAX_ROWS=int(os.environ.get('MAX_ROWS') or '1200')
 if not KEY:
     raise SystemExit('Missing GitHub secret FREESOUND_API_KEY')
 
@@ -38,17 +38,17 @@ TOKENS=[
  ('dna_vocal','vocal_layering','call and response vocals',['call response vocal','vocal response','group vocal'],0.8,14),
  ('dna_vocal','vocal_distance','ghostly distant vocal',['distant vocal','ghost vocal','reverb vocal'],1,15),
  ('dna_vocal','vocal_chop','vocal chop texture',['vocal chop','chopped vocal','vocal sample'],0.3,10),
- ('dna_vocal','human_noise','breath and mouth noise',['breath sound','mouth noise','human breath'],0.2,8),
+ ('dna_vocal','human_noise','breath and mouth noise',['breath','breathing','mouth sounds'],0.2,8),
  # hook / lead, 7
- ('dna_hook','hook_instrument','chopped brass hook',['brass stab','trumpet riff','horn loop'],0.3,10),
+ ('dna_hook','hook_instrument','chopped brass hook',['brass','trumpet','trombone'],0.3,12),
  ('dna_hook','hook_instrument','muted guitar riff',['muted guitar riff','guitar riff loop','clean guitar loop'],1,14),
- ('dna_hook','hook_instrument','felt piano motif',['piano motif','soft piano loop','felt piano'],1,14),
- ('dna_hook','hook_instrument','vocal chop lead',['vocal lead loop','vocal chop melody','voice melody'],0.5,12),
- ('dna_hook','hook_instrument','synth pluck motif',['synth pluck','pluck melody','synth riff'],0.5,12),
- ('dna_hook','motif_shape','short repeated motif',['short melody loop','repeated motif','music box loop'],0.5,12),
- ('dna_hook','motif_shape','one-note memorable stab',['music stab','single note hit','orchestral stab'],0.1,5),
+ ('dna_hook','hook_instrument','felt piano motif',['piano','soft piano','piano melody'],1,14),
+ ('dna_hook','hook_instrument','vocal chop lead',['vocal','voice','singing'],0.5,12),
+ ('dna_hook','hook_instrument','synth pluck motif',['synth','pluck','arpeggio'],0.5,12),
+ ('dna_hook','motif_shape','short repeated motif',['melody loop','riff','music loop'],0.5,12),
+ ('dna_hook','motif_shape','one-note memorable stab',['stab','hit','single note'],0.1,5),
  # chord / harmony, 6
- ('dna_chord','chord_instrument','warm rhodes chords',['rhodes chords','electric piano loop','warm keys loop'],1,14),
+ ('dna_chord','chord_instrument','warm rhodes chords',['rhodes','electric piano','keyboard chords'],1,14),
  ('dna_chord','chord_instrument','minor piano loop',['minor piano loop','dark piano loop','sad piano loop'],1,14),
  ('dna_chord','chord_instrument','dark guitar chords',['dark guitar chords','guitar chord loop','minor guitar loop'],1,14),
  ('dna_chord','harmony_mood','bittersweet harmony',['bittersweet loop','emotional chord loop','sad hopeful music'],1,14),
