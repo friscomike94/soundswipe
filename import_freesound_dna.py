@@ -125,7 +125,10 @@ for category, axis, token, query, lo, hi in QUERIES:
     except urllib.error.HTTPError as e:
         print('HTTP_ERROR', e.code, e.read().decode('utf-8')[:300])
         continue
-    cc0=[x for x in results if 'creative commons 0' in (x.get('license') or '').lower()]
+    def is_cc0(item):
+        lic=(item.get('license') or '').lower()
+        return ('creative commons 0' in lic) or ('publicdomain/zero' in lic) or ('zero/1.0' in lic) or ('cc0' in lic)
+    cc0=[x for x in results if is_cc0(x)]
     print('  results', len(results), 'cc0', len(cc0))
     rows.extend(make_row(x, category, axis, token, query, batch) for x in cc0)
     time.sleep(0.35)
