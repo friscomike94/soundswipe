@@ -31,19 +31,23 @@ PLIST
 plutil -lint "$PLIST" >/dev/null
 chmod 644 "$PLIST"
 
-if ! lsof -nP -iTCP:8877 -sTCP:LISTEN >/dev/null 2>&1; then
-  launchctl bootout "gui/$(id -u)/$LABEL" >/dev/null 2>&1 || true
-  launchctl bootstrap "gui/$(id -u)" "$PLIST"
+PIDS=$(lsof -t -nP -iTCP:8877 -sTCP:LISTEN 2>/dev/null || true)
+if [ -n "$PIDS" ]; then
+  kill $PIDS 2>/dev/null || true
+  sleep 1
+  LEFT=$(lsof -t -nP -iTCP:8877 -sTCP:LISTEN 2>/dev/null || true)
+  if [ -n "$LEFT" ]; then
+    kill -9 $LEFT 2>/dev/null || true
+    sleep 1
+  fi
 fi
 
+launchctl bootout "gui/$(id -u)/$LABEL" >/dev/null 2>&1 || true
+launchctl bootstrap "gui/$(id -u)" "$PLIST"
+launchctl kickstart -k "gui/$(id -u)/$LABEL"
+
 HOST=$(/usr/sbin/scutil --get LocalHostName 2>/dev/null || hostname -s)
-TOKEN_FILE="$ROOT/../.soundswipe_ableton_bridge_token"
-if [ -f "$TOKEN_FILE" ]; then
-  TOKEN=$(cat "$TOKEN_FILE")
-  URL="http://$HOST.local:8877/?t=$TOKEN"
-else
-  URL="http://$HOST.local:8877/"
-fi
+URL="http://$HOST.local:8877/"
 
 printf '\nSoundSwipe automatic connection installed.\n'
 printf 'The Bridge will start automatically at the next Mac login.\n'
