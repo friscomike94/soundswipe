@@ -1,10 +1,19 @@
 #!/bin/zsh
 set -e
 
-ROOT="$(cd "$(dirname "$0")" && pwd)"
+SOURCE="$(cd "$(dirname "$0")" && pwd)"
+DEST="$HOME/Library/Application Support/SoundSwipeAbletonBridge"
 LABEL="com.soundswipe.abletonbridge"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
-mkdir -p "$HOME/Library/LaunchAgents"
+
+mkdir -p "$DEST/data" "$HOME/Library/LaunchAgents"
+cp "$SOURCE/index.html" "$DEST/index.html"
+cp "$SOURCE/manifest.json" "$DEST/manifest.json"
+cp "$SOURCE/manifest.webmanifest" "$DEST/manifest.webmanifest"
+cp "$SOURCE/sw.js" "$DEST/sw.js"
+cp "$SOURCE/ableton_bridge.py" "$DEST/ableton_bridge.py"
+cp "$SOURCE/data/ableton_core_library_catalog.json" "$DEST/data/ableton_core_library_catalog.json"
+chmod 755 "$DEST/ableton_bridge.py"
 
 cat > "$PLIST" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
@@ -15,14 +24,14 @@ cat > "$PLIST" <<PLIST
   <key>ProgramArguments</key>
   <array>
     <string>/usr/bin/python3</string>
-    <string>$ROOT/ableton_bridge.py</string>
+    <string>$DEST/ableton_bridge.py</string>
     <string>--port</string><string>8877</string>
     <string>--no-open</string>
   </array>
-  <key>WorkingDirectory</key><string>$ROOT</string>
+  <key>WorkingDirectory</key><string>$DEST</string>
   <key>RunAtLoad</key><true/>
-  <key>StandardOutPath</key><string>$ROOT/launchagent.log</string>
-  <key>StandardErrorPath</key><string>$ROOT/launchagent-error.log</string>
+  <key>StandardOutPath</key><string>$DEST/launchagent.log</string>
+  <key>StandardErrorPath</key><string>$DEST/launchagent-error.log</string>
   <key>ProcessType</key><string>Background</string>
 </dict>
 </plist>
@@ -49,8 +58,16 @@ launchctl kickstart -k "gui/$(id -u)/$LABEL"
 HOST=$(/usr/sbin/scutil --get LocalHostName 2>/dev/null || hostname -s)
 URL="http://$HOST.local:8877/"
 
-printf '\nSoundSwipe automatic connection installed.\n'
-printf 'The Bridge will start automatically at the next Mac login.\n'
-printf 'On iPhone, scan once and choose Add to Home Screen.\n\n'
-open "$URL" || true
+for _ in 1 2 3 4 5; do
+  if curl -fsS "http://127.0.0.1:8877/" >/dev/null 2>&1; then
+    printf '\nSoundSwipe Bridge is running and automatic startup is installed.\n'
+    open "$URL" || true
+    read -k 1 "?Press any key to close..."
+    exit 0
+  fi
+  sleep 1
+done
+
+printf '\nBridge did not start. Check: %s/launchagent-error.log\n' "$DEST"
 read -k 1 "?Press any key to close..."
+exit 1
