@@ -14,6 +14,7 @@ import mimetypes
 import os
 import secrets
 import socket
+import subprocess
 import sys
 import urllib.parse
 import webbrowser
@@ -52,6 +53,20 @@ def local_ip() -> str:
         return "127.0.0.1"
     finally:
         sock.close()
+
+
+def local_hostname() -> str:
+    try:
+        name = subprocess.check_output(
+            ["/usr/sbin/scutil", "--get", "LocalHostName"],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        if name:
+            return f"{name}.local"
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return local_ip()
 
 
 def primary_role(item: dict) -> str:
@@ -276,8 +291,8 @@ def main() -> None:
     server = BridgeHTTPServer(
         (args.host, args.port), BridgeHandler, token=token, core_root=args.core_root
     )
-    ip = local_ip()
-    url = f"http://{ip}:{args.port}/?t={urllib.parse.quote(token)}"
+    host = local_hostname()
+    url = f"http://{host}:{args.port}/?t={urllib.parse.quote(token)}"
     print("\nSoundSwipe Ableton Bridge is ready")
     print(f"Phone URL: {url}")
     print(f"Items: {len(server.items)} total / {len(server.source_items)} source / {len(server.gesture_items)} gesture")
