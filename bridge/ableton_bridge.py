@@ -26,7 +26,7 @@ DEFAULT_CORE_ROOT = Path(
     "/Applications/Ableton Live 12 Trial.app/Contents/App-Resources/Core Library"
 )
 CATALOG_PATH = APP_ROOT / "data" / "ableton_core_library_catalog.json"
-TOKEN_PATH = APP_ROOT / ".bridge_token"
+TOKEN_PATH = APP_ROOT.parent / ".soundswipe_ableton_bridge_token"
 
 
 def load_or_create_token() -> str:
@@ -212,6 +212,10 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                 return
             self._serve_audio(item["preview_path"])
             return
+        allowed_static = {"/", "/index.html", "/manifest.json", "/manifest.webmanifest", "/sw.js"}
+        if parsed.path not in allowed_static:
+            self.send_error(HTTPStatus.NOT_FOUND, "Not found")
+            return
         super().do_GET()
 
     def _serve_audio(self, path: Path) -> None:
@@ -258,7 +262,7 @@ class BridgeHandler(SimpleHTTPRequestHandler):
 def main() -> None:
     parser = argparse.ArgumentParser(description="SoundSwipe Ableton local bridge")
     parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--port", default=8876, type=int)
+    parser.add_argument("--port", default=8877, type=int)
     parser.add_argument("--core-root", type=Path, default=DEFAULT_CORE_ROOT)
     parser.add_argument("--no-open", action="store_true", help="Do not open the Mac browser")
     args = parser.parse_args()
