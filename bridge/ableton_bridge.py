@@ -19,6 +19,7 @@ import sys
 import urllib.parse
 import webbrowser
 from http import HTTPStatus
+from http.cookies import SimpleCookie
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -136,6 +137,11 @@ class BridgeHandler(SimpleHTTPRequestHandler):
         return self.server  # type: ignore[return-value]
 
     def end_headers(self) -> None:
+        if getattr(self, "_set_pair_cookie", False):
+            self.send_header(
+                "Set-Cookie",
+                f"ss_ableton_bridge={self.bridge.token}; Path=/; Max-Age=31536000; HttpOnly; SameSite=Strict",
+            )
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Cache-Control", "no-store")
         super().end_headers()
@@ -145,7 +151,11 @@ class BridgeHandler(SimpleHTTPRequestHandler):
 
     def _authorized(self) -> bool:
         provided = (self._query().get("t") or [""])[0]
-        return secrets.compare_digest(provided, self.bridge.token)
+        if provided and secrets.compare_digest(provided, self.bridge.token):
+            return True
+        cookies = SimpleCookie(self.headers.get("Cookie", ""))
+        paired = cookies.get("ss_ableton_bridge")
+        return bool(paired and secrets.compare_digest(paired.value, self.bridge.token))
 
     def _json(self, payload: dict | list, status: int = 200) -> None:
         body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode(
@@ -195,7 +205,6 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             source = (
                 self.bridge.gesture_items if lane == "gesture" else self.bridge.source_items
             )
-            token = urllib.parse.quote(self.bridge.token, safe="")
             payload = []
             for x in source:
                 payload.append(
@@ -210,9 +219,7 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                         "factory_tags": x["factory_tags"],
                         "feature_dimensions": x["feature_dimensions"],
                         "preview_url": "/ableton/preview?id="
-                        + urllib.parse.quote(x["id"], safe="")
-                        + "&t="
-                        + token,
+                        + urllib.parse.quote(x["id"], safe=""),
                     }
                 )
             self._json({"lane": lane, "count": len(payload), "items": payload})
@@ -231,6 +238,8 @@ class BridgeHandler(SimpleHTTPRequestHandler):
         if parsed.path not in allowed_static:
             self.send_error(HTTPStatus.NOT_FOUND, "Not found")
             return
+        if parsed.path in ("/", "/index.html"):
+            self._set_pair_cookie = True
         super().do_GET()
 
     def _serve_audio(self, path: Path) -> None:
@@ -292,7 +301,7 @@ def main() -> None:
         (args.host, args.port), BridgeHandler, token=token, core_root=args.core_root
     )
     host = local_hostname()
-    url = f"http://{host}:{args.port}/?t={urllib.parse.quote(token)}"
+    url = f"http://{host}:{args.port}/"
     print("\nSoundSwipe Ableton Bridge is ready")
     print(f"Phone URL: {url}")
     print(f"Items: {len(server.items)} total / {len(server.source_items)} source / {len(server.gesture_items)} gesture")
