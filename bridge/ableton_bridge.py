@@ -258,7 +258,7 @@ class BridgeHandler(SimpleHTTPRequestHandler):
 def main() -> None:
     parser = argparse.ArgumentParser(description="SoundSwipe Ableton local bridge")
     parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--port", default=8765, type=int)
+    parser.add_argument("--port", default=8876, type=int)
     parser.add_argument("--core-root", type=Path, default=DEFAULT_CORE_ROOT)
     parser.add_argument("--no-open", action="store_true", help="Do not open the Mac browser")
     args = parser.parse_args()
