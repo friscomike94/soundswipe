@@ -10,13 +10,22 @@ Local-only companion for the `Ableton DNA` tab in SoundSwipe.
 - Sends only ratings to the existing SoundSwipe Supabase database.
 - Exposes 1,994 Device/Rack sources for Stage 1 and 569 Groove/MIDI items for Stage 3.
 
-## Start
+## Automatic connection
+
+1. Double-click `Install Automatic Connection.command` once.
+2. The Bridge will start automatically at future Mac logins.
+3. Scan the QR once on the iPhone and choose **Add to Home Screen**.
+4. From then on, opening the SoundSwipe icon reconnects automatically through the Mac's stable `.local` address.
+
+The Mac and iPhone must be on the same Wi-Fi, and the Mac must be awake.
+
+## Manual start
 
 Double-click `Start Ableton DNA.command`, or run:
 
 ```bash
 cd ~/Documents/AbletonAIExperiment/SoundSwipeAbletonBridge
-python3 ableton_bridge.py --port 8876
+python3 ableton_bridge.py --port 8877
 ```
 
 The Mac browser opens automatically. Open the Ableton tab and scan its QR code with the iPhone.
