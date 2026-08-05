@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "created": "2026-08-05",
+  "renderer": "SoundSwipe deterministic offline synthesis v1",
+  "rights": "Original SoundSwipe synthesis, public-safe",
+  "technical_standard": {
+    "format": "PCM WAV",
+    "sample_rate_hz": 24000,
+    "channels": 2,
+    "bit_depth": 16,
+    "fade_ms": 20,
+    "loudness_target": "-23 dBFS mono-sum RMS",
+    "normalization": "linear gain, no limiter",
+    "peak_ceiling": "-1 dBFS"
+  },
+  "pairs": [
+    {
+      "test_id": "TECH-T01-ONE-BEAT-VACUUM",
+      "technique_id": "TNS-01",
+      "tier": "micro",
+      "duration_seconds": 16,
+      "a": "T01A_control_full_groove.wav",
+      "b": "T01B_one_beat_vacuum.wav",
+      "technique_side": "b",
+      "changed_variable": "one beat of total-arrangement silence from 14.5s to 15.0s",
+      "rms_dbfs_a": -23.0,
+      "rms_dbfs_b": -23.0,
+      "peak_dbfs_a": -9.8295,
+      "peak_dbfs_b": -9.8176,
+      "audit": "Vacuum-window mono-sum RMS changed from -33.35 dBFS to -46.54 dBFS; 12 ms edge fades prevent clicks."
+    },
+    {
+      "test_id": "TECH-T02-HALF-TIME-SHIFT",
+      "technique_id": "GRV-04",
+      "tier": "mid",
+      "duration_seconds": 40,
+      "a": "T02A_half_time_shift.wav",
+      "b": "T02B_control_straight_backbeat.wav",
+      "technique_side": "a",
+      "changed_variable": "snare placement in the second 8 bars only",
+      "rms_dbfs_a": -23.0,
+      "rms_dbfs_b": -23.0,
+      "peak_dbfs_a": -9.2478,
+      "peak_dbfs_b": -9.2571,
+      "audit": "First-half A/B difference is effectively null (-82.29 dBFS); second-half difference is -37.88 dBFS."
+    },
+    {
+      "test_id": "TECH-T03-DENSITY-RAMP",
+      "technique_id": "TEX-05",
+      "tier": "macro",
+      "duration_seconds": 80,
+      "a": "T03A_control_constant_density.wav",
+      "b": "T03B_density_ramp.wav",
+      "technique_side": "b",
+      "changed_variable": "entry schedule of the same stem set",
+      "rms_dbfs_a": -23.0,
+      "rms_dbfs_b": -23.0,
+      "peak_dbfs_a": -9.2208,
+      "peak_dbfs_b": -9.1931,
+      "audit": "Early-section A/B difference is -37.97 dBFS; final 20-second difference falls to -66.76 dBFS after both conditions reach full density."
+    }
+  ],
+  "evidence_boundary": "These renders validate deterministic technique implementation only. They are not Suno implementation-success evidence and contain no listener preference evidence until a user votes."
+}

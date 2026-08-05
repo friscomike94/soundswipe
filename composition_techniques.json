@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "library_version": "MVP-30",
   "updated": "2026-08-05",
-  "status": "CATALOG_READY_NO_AUDIO_TESTS",
+  "status": "AUDIO_MVP_3_READY",
   "attribution": "Technique concepts were adapted into original SoundSwipe listening-test language from open educational sources. Test descriptions, A/B conditions, and Suno clauses were rewritten by SoundSwipe. Open Music Theory content is CC BY-SA 4.0. Music Theory for the 21st-Century Classroom is GNU FDL 1.2+. Practice-derived production techniques are marked DERIVED and contain no copied source text.",
   "sources": [
     {
@@ -72,6 +72,55 @@
     {"id":"TNS-04","title_ko":"통제된 임팩트","canonical_name":"Controlled Impact Arrival","family":"Tension/Release","listener_effect_ko":"쌓인 요소가 한 다운비트에 정확히 함께 도착한다.","condition_a":"여러 요소가 두 마디에 걸쳐 점진적으로 해결","condition_b":"화성·밀도·드럼을 한 다운비트에 동시 해결","duration_seconds":40,"suno_prompt_clause":"resolve the buildup in one synchronized downbeat hit","failure_mode":"어느 요소라도 먼저 도착하면 깨끗한 임팩트가 흐트러진다.","source_key":"DERIVED","source_path":"","mvp":false,"status":"catalogued"},
     {"id":"TNS-05","title_ko":"미해결 엔딩","canonical_name":"Unresolved Ending","family":"Tension/Release","listener_effect_ko":"곡이 안정된 으뜸화음 대신 열린 화음에 머문다.","condition_a":"으뜸화음으로 완전히 종결","condition_b":"비으뜸·서스펜디드·모호한 화음으로 끝냄","duration_seconds":120,"suno_prompt_clause":"end on an unresolved non-tonic chord instead of a final cadence","failure_mode":"앞에 안정감을 세우지 않으면 의도된 미해결보다 미완성으로 들린다.","source_key":"OMT2","source_path":"part/diatonic-harmony/","mvp":false,"status":"catalogued"}
   ],
-  "tests": [],
+  "tests": [
+    {
+      "id": "TECH-T01-ONE-BEAT-VACUUM",
+      "technique_id": "TNS-01",
+      "source_id": "SS-ORIGINAL-MICRO-120",
+      "source_lineage": "soundswipe-original-synthesis-micro-v1",
+      "tier": "micro",
+      "duration_seconds": 16,
+      "question_ko": "어느 쪽의 마지막 도착이 더 기억에 남나요?",
+      "technique_side": "b",
+      "a": {"label":"A","audio":"T01A_control_full_groove.wav","condition":"control","description":"도착 직전까지 전체 그루브 유지"},
+      "b": {"label":"B","audio":"T01B_one_beat_vacuum.wav","condition":"technique","description":"도착 직전 정확히 한 박 전체 음소거"},
+      "fixed_variables": ["120 BPM", "same notes", "same drums", "same mix", "same 16-second arrangement", "-23 dBFS mono-sum RMS"],
+      "implementation_audit": {"audible":true,"renderer":"deterministic offline synthesis","changed_variable":"one beat of total silence from 14.5s to 15.0s","suno_implementation":false},
+      "rights": "Original SoundSwipe synthesis, public-safe",
+      "status": "ready"
+    },
+    {
+      "id": "TECH-T02-HALF-TIME-SHIFT",
+      "technique_id": "GRV-04",
+      "source_id": "SS-ORIGINAL-MID-096",
+      "source_lineage": "soundswipe-original-synthesis-mid-v1",
+      "tier": "mid",
+      "duration_seconds": 40,
+      "question_ko": "중간 이후 어느 쪽의 무게 변화가 더 내 음악 같나요?",
+      "technique_side": "a",
+      "a": {"label":"A","audio":"T02A_half_time_shift.wav","condition":"technique","description":"후반 8마디에서 스네어를 3박에만 배치"},
+      "b": {"label":"B","audio":"T02B_control_straight_backbeat.wav","condition":"control","description":"전체 구간에서 스네어를 2·4박에 유지"},
+      "fixed_variables": ["96 BPM", "same harmony", "same bass and kick", "same melody", "same 40-second arrangement", "-23 dBFS mono-sum RMS"],
+      "implementation_audit": {"audible":true,"renderer":"deterministic offline synthesis","changed_variable":"snare placement in the second 8 bars","suno_implementation":false},
+      "rights": "Original SoundSwipe synthesis, public-safe",
+      "status": "ready"
+    },
+    {
+      "id": "TECH-T03-DENSITY-RAMP",
+      "technique_id": "TEX-05",
+      "source_id": "SS-ORIGINAL-MACRO-096",
+      "source_lineage": "soundswipe-original-synthesis-macro-v1",
+      "tier": "macro",
+      "duration_seconds": 80,
+      "question_ko": "전체 흐름에서 어느 쪽의 몰입 상승이 더 자연스러운가요?",
+      "technique_side": "b",
+      "a": {"label":"A","audio":"T03A_control_constant_density.wav","condition":"control","description":"모든 편곡 층을 처음부터 일정하게 유지"},
+      "b": {"label":"B","audio":"T03B_density_ramp.wav","condition":"technique","description":"10초 간격으로 코드·하이햇·플럭·패드·리드·퍼커션을 순차 도입"},
+      "fixed_variables": ["96 BPM", "same stem set", "same notes and groove", "same final density", "same 80-second form", "-23 dBFS mono-sum RMS"],
+      "implementation_audit": {"audible":true,"renderer":"deterministic offline synthesis","changed_variable":"entry schedule of an otherwise identical stem set","suno_implementation":false},
+      "rights": "Original SoundSwipe synthesis, public-safe",
+      "status": "ready"
+    }
+  ],
   "evidence": []
 }
