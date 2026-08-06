@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PUBLIC_OWNER_TEST_AUTHORIZED",
+  "status": "PUBLIC_OWNER_TEST_STAGE2_REVISED",
   "created_at": "2026-08-06T01:40:09.775Z",
   "source_snapshot": {
     "workspace_reported": 1949,
@@ -24,14 +24,18 @@
     "public_authorization": true,
     "sync_enabled": true,
     "publication_scope": "Exact 417-song non-edit-mode catalog league only",
-    "authorized_at": "2026-08-06T02:37:17Z"
+    "authorized_at": "2026-08-06T02:37:17Z",
+    "stage2_rule": "A/B winner advances; both_good advances both; any both_bad participation removes a song unless exact saved_sample override; cannot_tell does not advance; untested singleton does not advance."
   },
   "summary": {
     "songs": 417,
     "lineages": 149,
     "singletons": 46,
     "multi_variant_lineages": 103,
-    "stage1_pairs": 291
+    "stage1_pairs": 291,
+    "stage2_revised_candidates": 136,
+    "stage2_revised_lineages": 58,
+    "stage2_revised_pairs": 272
   },
   "songs": [
     {
@@ -10355,6 +10359,3844 @@
       "lineage_id": "L073",
       "song_a": "aa49c03b-27f6-4c4c-85d2-ac862f42fa74",
       "song_b": "e02b1616-8a0c-4e79-9384-c7dd2774def9"
+    }
+  ],
+  "stage2_revision": {
+    "version": "filtered_136_v1",
+    "status": "DEPLOY_READY",
+    "generated_at": "2026-08-06T17:00:00+09:00",
+    "stage1_votes": 291,
+    "verdict_distribution": {
+      "a": 98,
+      "b": 96,
+      "both_good": 3,
+      "both_bad": 94,
+      "cannot_tell": 0
+    },
+    "raw_positive_union": 151,
+    "removed_for_any_both_bad": 16,
+    "saved_overrides_readded": 1,
+    "candidates": 136,
+    "lineages": 58,
+    "rounds": 4,
+    "pairs_per_round": 68,
+    "total_pairs": 272,
+    "per_song_exposure": 4,
+    "side_balance": "2A/2B each",
+    "same_lineage_pairs": 0,
+    "duplicate_pairs": 0,
+    "round_design": "R1 mostly same lane; R2-R4 cross-lane diversity; no same-lineage rematches"
+  },
+  "stage2_candidates": [
+    {
+      "song_id": "05946e8f-da86-4675-9be1-d6f8a0306e37",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "071123c9-3ed0-42e6-88db-7b621e67fb75",
+      "lineage_id": "L144",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "079cefa7-87f3-412d-9541-81e21ab83496",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "0aa34199-7d77-419c-b9fe-a14e20b85d7a",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "0b227a1c-0765-4e08-b831-963aff51b483",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "0b8b13ee-e26e-400f-98c4-1405b502ad89",
+      "lineage_id": "L101",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "0d0f19d3-7aa5-492d-9613-24663ad55ace",
+      "lineage_id": "L070",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "10f5dc91-d5b5-4324-80e3-42e6a993f9ac",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "126d00bb-dff2-45f4-a48b-7434e44eb7c7",
+      "lineage_id": "L070",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "13f64a79-7c8f-4a22-a73a-66ea41b76f70",
+      "lineage_id": "L055",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "14046994-1e7e-4fac-8ff9-3f7727157a20",
+      "lineage_id": "L022",
+      "lane_key": "instrumental|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "1542a1e0-9e46-417e-b76c-fc7a39936efd",
+      "lineage_id": "L084",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "17d7e672-18a5-4ddf-b4ca-11eb3280b4ca",
+      "lineage_id": "L055",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "17fb9089-89c0-462f-a44b-41603b5f82ef",
+      "lineage_id": "L145",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "183ae1ef-e283-4a54-b5ae-44fb8851ec78",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "183f45b6-382a-4f8d-8e29-b70a171f82ff",
+      "lineage_id": "L082",
+      "lane_key": "unknown|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 1,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "both_good"
+    },
+    {
+      "song_id": "194d457f-4333-4204-959b-69bdaa6de997",
+      "lineage_id": "L055",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "19b09336-6d48-4a8e-be11-371f4935455a",
+      "lineage_id": "L093",
+      "lane_key": "vocal|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "19d45717-ddc5-4b7f-8e4a-e4665ff25b3e",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "20a4f802-8333-4b47-b01b-9e414618677e",
+      "lineage_id": "L021",
+      "lane_key": "vocal|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "21bb0535-8ee4-4a47-9730-d36952f5c826",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "26a92cde-81af-4bf2-8914-39ae73cae693",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "2bd58e5c-c33f-499d-9647-a0c6e19f78cb",
+      "lineage_id": "L124",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "2cd31768-677f-4a8d-b7a0-c5248d063339",
+      "lineage_id": "L081",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "2e271773-8d05-44f4-88d0-a17c04452735",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "31a55ee7-96da-4455-ae17-f6539858d640",
+      "lineage_id": "L072",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "3a8f63d7-0b9b-4a29-93c8-dd56d72d9e02",
+      "lineage_id": "L009",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "3bb8e925-34a6-4641-b1ce-fd49ac46e6f0",
+      "lineage_id": "L073",
+      "lane_key": "unknown|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "3be3bce6-1bb5-40bb-b1bb-1cc753886458",
+      "lineage_id": "L113",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "3c722273-e621-42d4-bfda-f68777d63bcd",
+      "lineage_id": "L144",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "3e0f269a-d61f-49f9-8c7e-4ddd1be3b0bb",
+      "lineage_id": "L102",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "3e269b3d-4f73-4e4c-b25f-63f9efc4ea8f",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "4374816b-07c1-456b-ad27-6cccbe34330b",
+      "lineage_id": "L060",
+      "lane_key": "vocal|electronic_bass|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "456a7202-acec-4245-b57e-da2dd57b7260",
+      "lineage_id": "L052",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "465e3d82-290b-4c7e-827c-dac9b1bbe0f4",
+      "lineage_id": "L082",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "4d88eb5c-b383-430f-9ebc-ea28be7a1237",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "51b0b8f9-3962-47f7-be33-d0d8775cc703",
+      "lineage_id": "L089",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 0,
+      "both_good": 1,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "both_good"
+    },
+    {
+      "song_id": "53654d94-047c-4b0f-89d9-14f7f34f34b7",
+      "lineage_id": "L137",
+      "lane_key": "vocal|electronic_bass|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "54b6f95b-654a-4f11-ac7d-de36a01926bd",
+      "lineage_id": "L007",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "56889de0-6714-4335-b37c-d497c7c590fa",
+      "lineage_id": "L078",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "5ab1b9bd-f86a-4a64-99a7-7956bdb63677",
+      "lineage_id": "L133",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "5ae29f9f-5bf9-4ebc-8c09-f22a42a95f44",
+      "lineage_id": "L002",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "5c42a927-ffa0-45ed-abad-6dba03051b59",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "5f29f3c2-6e9c-47a5-906a-48bd62044b58",
+      "lineage_id": "L052",
+      "lane_key": "vocal|electronic_bass|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "5f51bc3a-e672-4680-85bd-de79fbdae5e6",
+      "lineage_id": "L047",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "604f72c0-9b9d-49bd-bcc3-d2c64dbadded",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 1,
+      "both_bad": 0,
+      "saved_override": true,
+      "advance_reason": "both_good"
+    },
+    {
+      "song_id": "605865f1-a571-48aa-ae5a-7782f26644aa",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 1,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "both_good"
+    },
+    {
+      "song_id": "66d4aa91-e925-48f5-8eea-62e7f6560b6d",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "674571ec-f23b-4b52-8bd1-2e54841d32e8",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "6749a684-f52e-4131-8772-6f27f128ef01",
+      "lineage_id": "L109",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "67b787a9-206a-4f7d-8d52-cddb0c0b5c7c",
+      "lineage_id": "L148",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "6804655b-b108-4931-b143-6a5b72f75c7b",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "68f80def-ff24-4133-99b7-33ea4af849d3",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "6acb502e-a95a-475d-b85e-5d3559de752a",
+      "lineage_id": "L125",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "6cbdaf1d-8e0f-4496-b29a-efd0a8939133",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "704c21e3-e119-4997-93dd-72e01493fbc2",
+      "lineage_id": "L089",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "71f3299a-693d-4a0e-8c78-3a452fbd13fe",
+      "lineage_id": "L131",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "724ce8da-5989-479e-8246-1fc63db27fb0",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "79325cfb-8b04-4ba0-9d5a-88d17d85677f",
+      "lineage_id": "L089",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "79abc48b-b05c-461a-8122-7824c3969a18",
+      "lineage_id": "L061",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "7a457305-beaa-49c8-8bc9-6e982ee628cc",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "81d9052d-09f1-4ef3-8ddc-9018d9f022c7",
+      "lineage_id": "L020",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8370b0df-fdb6-41e1-930b-90fc6e3ffceb",
+      "lineage_id": "L136",
+      "lane_key": "instrumental|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "83c1d308-0746-4050-bda8-eb233f95de54",
+      "lineage_id": "L052",
+      "lane_key": "vocal|electronic_bass|bpm_115_139",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8471efc3-aa25-4343-a50b-63d392f1b58a",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "87ce421e-612f-42c5-89e4-064b4b36fad8",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "89363b23-dc9e-4308-afda-71cb5a1c27fd",
+      "lineage_id": "L133",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "89abf182-2082-4bbb-9dfa-536f5061ac7f",
+      "lineage_id": "L106",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8a586691-892d-481f-82b6-b46a41a27f8c",
+      "lineage_id": "L072",
+      "lane_key": "vocal|electronic_bass|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8a9a69bb-b987-4f5b-a459-f2bd65f30ca3",
+      "lineage_id": "L026",
+      "lane_key": "instrumental|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8c0f2e39-07ce-4c4e-9d58-0864d30a3608",
+      "lineage_id": "L133",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8c3bd225-dab8-4ba2-89e4-c2c22ce988e6",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "8cdd9a66-3951-471c-b560-f1d8f48acf99",
+      "lineage_id": "L119",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "9077e546-a5d9-410a-a4df-b1cd48cc44c0",
+      "lineage_id": "L055",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "91c6043e-2609-4adf-b67d-56ba7f4d507d",
+      "lineage_id": "L070",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "91c85e62-2438-4149-a399-1f407b0b9db1",
+      "lineage_id": "L133",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "976f050c-08e4-41b4-8570-331534c88a6a",
+      "lineage_id": "L045",
+      "lane_key": "unknown|other|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "9ad673a5-7104-41e4-8d09-8deff5d5cf6f",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "9cb251b8-42aa-4187-9fc3-19500d666120",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "9cd8d650-6b1f-4879-a81e-2d6957b849f1",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "9d2d2049-3907-4868-8077-8f3a0aab3dc0",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "9d3e2115-b51a-412e-a8fe-de0a44bd3ef4",
+      "lineage_id": "L007",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "a3e2aef1-ad9e-4367-809c-ae8bdef54c2d",
+      "lineage_id": "L094",
+      "lane_key": "instrumental|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "a421facf-901b-4ca4-82ec-92797f9c980f",
+      "lineage_id": "L121",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "a4338891-06e8-47f4-9f96-009f2e9a1356",
+      "lineage_id": "L067",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "a64fcde0-b40c-48f7-a343-275e51e491d6",
+      "lineage_id": "L089",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 1,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "both_good"
+    },
+    {
+      "song_id": "a71983ac-0cd1-400b-a505-66e06cafd20f",
+      "lineage_id": "L138",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "a831d40c-293c-4749-89c1-3e0949bccb12",
+      "lineage_id": "L108",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "aa25dfbc-3308-4c3d-9548-f98dbd147ec8",
+      "lineage_id": "L121",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ab62d1cf-9387-41bc-83a9-a86e47fadc2d",
+      "lineage_id": "L056",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ac2c59e4-1366-46e1-ae5e-5000cae6567c",
+      "lineage_id": "L047",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ad2a3046-2656-4ca2-afc7-175e430a4c7a",
+      "lineage_id": "L052",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "af0a3ae0-f865-4982-bc65-f97e035c7c39",
+      "lineage_id": "L121",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "b1c180dd-b13b-4b2e-bdb3-9b06fdfbdd65",
+      "lineage_id": "L082",
+      "lane_key": "unknown|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 1,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "both_good"
+    },
+    {
+      "song_id": "b2901c11-96c3-4614-bb29-f7d574d09124",
+      "lineage_id": "L072",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "b324eee6-370e-4dc9-8ec7-305eb3360e78",
+      "lineage_id": "L072",
+      "lane_key": "vocal|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": true,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "b3e99c19-e4d4-4a15-8ffa-1117ff2bd062",
+      "lineage_id": "L121",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "b42ffdde-3c7b-4055-a645-e67f496e77d2",
+      "lineage_id": "L064",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "b70618f7-f45e-4ede-9057-a955b53a6d5f",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "b87f2bba-4f25-402e-948b-ab7e9a3b2663",
+      "lineage_id": "L082",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ba7f858b-1180-4904-b279-f17ca56e3b59",
+      "lineage_id": "L135",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "bb23ddca-33d9-4b5a-ad87-7724b87c9724",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "beb9b2f9-77b2-43d7-b632-9d723c9175b3",
+      "lineage_id": "L115",
+      "lane_key": "vocal|electronic_bass|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "c150b34a-477f-48bd-a7a0-fc7cb90bdca0",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "c6b387dd-ee17-4eb9-83ad-cfdb74013ecc",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "cb920b51-ace7-42ec-ad70-45655d70ca4e",
+      "lineage_id": "L025",
+      "lane_key": "instrumental|electronic_bass|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "cc9224da-50f0-4d8f-9ee9-72aabe33f32b",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "d04282ba-ad61-4716-81ac-cda565895568",
+      "lineage_id": "L052",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "d0dff529-bbd6-49f3-b4ad-4bfe34e9ed2f",
+      "lineage_id": "L067",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "d541db96-4173-4778-9e4d-9b18e7df6c19",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "d7083a71-0119-45a0-a8cf-36b79a85d959",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "dcb796f2-e6ef-4680-a8da-29a63965a6a7",
+      "lineage_id": "L130",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": true,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "dee269ad-2df6-4a54-a20f-759d7518c08e",
+      "lineage_id": "L107",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "e02b1616-8a0c-4e79-9384-c7dd2774def9",
+      "lineage_id": "L073",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "e1248f30-1c8f-410a-9004-e0d2aa9ea265",
+      "lineage_id": "L141",
+      "lane_key": "instrumental|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "e13dea18-46c4-48ca-aced-aabb55b95d6c",
+      "lineage_id": "L072",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "e1583bf2-0f4a-48d6-8095-dd3ebba06b5b",
+      "lineage_id": "L067",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "e7b58c50-c54b-4e0f-a001-c0bcc85b5ce3",
+      "lineage_id": "L137",
+      "lane_key": "vocal|electronic_bass|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "e8f1a612-197a-4b2b-9cdb-26e432c39c33",
+      "lineage_id": "L103",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "eaa152a4-4cdb-45d3-a745-fd42ad4379c1",
+      "lineage_id": "L089",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": true,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ebadd933-5390-4854-8ed6-d4b461b63a53",
+      "lineage_id": "L057",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ee2b2cfa-246f-4e09-b8ae-8899938223c4",
+      "lineage_id": "L007",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ee587e1a-ed50-454c-b59c-c96560f2b779",
+      "lineage_id": "L127",
+      "lane_key": "unknown|other|bpm_unknown",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f22e9537-d101-4494-a060-44ff8db22eee",
+      "lineage_id": "L024",
+      "lane_key": "instrumental|electronic_bass|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f24675cb-d429-4bd0-964d-ccca32725ad7",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f3ccf6c9-2f2b-42b1-ab43-fcb9005e71f0",
+      "lineage_id": "L055",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f55ffb35-64ff-44ab-878c-945a2cc2b416",
+      "lineage_id": "L091",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f5d42526-2380-4a27-91be-e64f02247eac",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f784f5a5-b428-4094-a9a6-59a440a12f2a",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f7c83c24-e813-424d-940a-09a91f00f6be",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f7f1377d-d943-4d43-99b8-3293e63d38e9",
+      "lineage_id": "L027",
+      "lane_key": "instrumental|electronic_bass|bpm_115_139",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "f8cd4ea7-19cf-4b91-aa7a-a993a8aff873",
+      "lineage_id": "L055",
+      "lane_key": "vocal|electronic_bass|bpm_unknown",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "fbf20f1a-c6f3-467b-be92-3b807b8347e1",
+      "lineage_id": "L081",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 2,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "fcdf9b9a-6f88-4bd8-b75a-da5a4d39637a",
+      "lineage_id": "L002",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "fd0d62fc-a9ba-4611-87cc-bc3412914208",
+      "lineage_id": "L143",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_140_plus",
+      "wins": 1,
+      "both_good": 0,
+      "both_bad": 0,
+      "saved_override": false,
+      "advance_reason": "decisive_winner"
+    },
+    {
+      "song_id": "ff732e02-77cd-4cc6-a4cc-6d4f3ebd6d6c",
+      "lineage_id": "L123",
+      "lane_key": "vocal|hiphop_sample_soul|bpm_90_114",
+      "wins": 0,
+      "both_good": 0,
+      "both_bad": 1,
+      "saved_override": true,
+      "advance_reason": "saved_override"
+    }
+  ],
+  "stage2_pairs": [
+    {
+      "id": "CAT-S2R-R1-001",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b70618f7-f45e-4ede-9057-a955b53a6d5f",
+      "song_b": "e13dea18-46c4-48ca-aced-aabb55b95d6c"
+    },
+    {
+      "id": "CAT-S2R-R1-002",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "cc9224da-50f0-4d8f-9ee9-72aabe33f32b",
+      "song_b": "5ab1b9bd-f86a-4a64-99a7-7956bdb63677"
+    },
+    {
+      "id": "CAT-S2R-R1-003",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "af0a3ae0-f865-4982-bc65-f97e035c7c39",
+      "song_b": "ff732e02-77cd-4cc6-a4cc-6d4f3ebd6d6c"
+    },
+    {
+      "id": "CAT-S2R-R1-004",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "91c6043e-2609-4adf-b67d-56ba7f4d507d",
+      "song_b": "674571ec-f23b-4b52-8bd1-2e54841d32e8"
+    },
+    {
+      "id": "CAT-S2R-R1-005",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "bb23ddca-33d9-4b5a-ad87-7724b87c9724",
+      "song_b": "9d3e2115-b51a-412e-a8fe-de0a44bd3ef4"
+    },
+    {
+      "id": "CAT-S2R-R1-006",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8c3bd225-dab8-4ba2-89e4-c2c22ce988e6",
+      "song_b": "8c0f2e39-07ce-4c4e-9d58-0864d30a3608"
+    },
+    {
+      "id": "CAT-S2R-R1-007",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9cd8d650-6b1f-4879-a81e-2d6957b849f1",
+      "song_b": "b3e99c19-e4d4-4a15-8ffa-1117ff2bd062"
+    },
+    {
+      "id": "CAT-S2R-R1-008",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e1583bf2-0f4a-48d6-8095-dd3ebba06b5b",
+      "song_b": "4d88eb5c-b383-430f-9ebc-ea28be7a1237"
+    },
+    {
+      "id": "CAT-S2R-R1-009",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ee2b2cfa-246f-4e09-b8ae-8899938223c4",
+      "song_b": "68f80def-ff24-4133-99b7-33ea4af849d3"
+    },
+    {
+      "id": "CAT-S2R-R1-010",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "aa25dfbc-3308-4c3d-9548-f98dbd147ec8",
+      "song_b": "d7083a71-0119-45a0-a8cf-36b79a85d959"
+    },
+    {
+      "id": "CAT-S2R-R1-011",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "126d00bb-dff2-45f4-a48b-7434e44eb7c7",
+      "song_b": "66d4aa91-e925-48f5-8eea-62e7f6560b6d"
+    },
+    {
+      "id": "CAT-S2R-R1-012",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e02b1616-8a0c-4e79-9384-c7dd2774def9",
+      "song_b": "724ce8da-5989-479e-8246-1fc63db27fb0"
+    },
+    {
+      "id": "CAT-S2R-R1-013",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a4338891-06e8-47f4-9f96-009f2e9a1356",
+      "song_b": "9ad673a5-7104-41e4-8d09-8deff5d5cf6f"
+    },
+    {
+      "id": "CAT-S2R-R1-014",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "fbf20f1a-c6f3-467b-be92-3b807b8347e1",
+      "song_b": "f5d42526-2380-4a27-91be-e64f02247eac"
+    },
+    {
+      "id": "CAT-S2R-R1-015",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6804655b-b108-4931-b143-6a5b72f75c7b",
+      "song_b": "91c85e62-2438-4149-a399-1f407b0b9db1"
+    },
+    {
+      "id": "CAT-S2R-R1-016",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "2e271773-8d05-44f4-88d0-a17c04452735",
+      "song_b": "17fb9089-89c0-462f-a44b-41603b5f82ef"
+    },
+    {
+      "id": "CAT-S2R-R1-017",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0aa34199-7d77-419c-b9fe-a14e20b85d7a",
+      "song_b": "2bd58e5c-c33f-499d-9647-a0c6e19f78cb"
+    },
+    {
+      "id": "CAT-S2R-R1-018",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8cdd9a66-3951-471c-b560-f1d8f48acf99",
+      "song_b": "5c42a927-ffa0-45ed-abad-6dba03051b59"
+    },
+    {
+      "id": "CAT-S2R-R1-019",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3e0f269a-d61f-49f9-8c7e-4ddd1be3b0bb",
+      "song_b": "10f5dc91-d5b5-4324-80e3-42e6a993f9ac"
+    },
+    {
+      "id": "CAT-S2R-R1-020",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "456a7202-acec-4245-b57e-da2dd57b7260",
+      "song_b": "9d2d2049-3907-4868-8077-8f3a0aab3dc0"
+    },
+    {
+      "id": "CAT-S2R-R1-021",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8471efc3-aa25-4343-a50b-63d392f1b58a",
+      "song_b": "a421facf-901b-4ca4-82ec-92797f9c980f"
+    },
+    {
+      "id": "CAT-S2R-R1-022",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "21bb0535-8ee4-4a47-9730-d36952f5c826",
+      "song_b": "d04282ba-ad61-4716-81ac-cda565895568"
+    },
+    {
+      "id": "CAT-S2R-R1-023",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f24675cb-d429-4bd0-964d-ccca32725ad7",
+      "song_b": "81d9052d-09f1-4ef3-8ddc-9018d9f022c7"
+    },
+    {
+      "id": "CAT-S2R-R1-024",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "05946e8f-da86-4675-9be1-d6f8a0306e37",
+      "song_b": "8a586691-892d-481f-82b6-b46a41a27f8c"
+    },
+    {
+      "id": "CAT-S2R-R1-025",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "183ae1ef-e283-4a54-b5ae-44fb8851ec78",
+      "song_b": "54b6f95b-654a-4f11-ac7d-de36a01926bd"
+    },
+    {
+      "id": "CAT-S2R-R1-026",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "17d7e672-18a5-4ddf-b4ca-11eb3280b4ca",
+      "song_b": "5f51bc3a-e672-4680-85bd-de79fbdae5e6"
+    },
+    {
+      "id": "CAT-S2R-R1-027",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f7c83c24-e813-424d-940a-09a91f00f6be",
+      "song_b": "a71983ac-0cd1-400b-a505-66e06cafd20f"
+    },
+    {
+      "id": "CAT-S2R-R1-028",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "13f64a79-7c8f-4a22-a73a-66ea41b76f70",
+      "song_b": "67b787a9-206a-4f7d-8d52-cddb0c0b5c7c"
+    },
+    {
+      "id": "CAT-S2R-R1-029",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "dcb796f2-e6ef-4680-a8da-29a63965a6a7",
+      "song_b": "d541db96-4173-4778-9e4d-9b18e7df6c19"
+    },
+    {
+      "id": "CAT-S2R-R1-030",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3be3bce6-1bb5-40bb-b1bb-1cc753886458",
+      "song_b": "079cefa7-87f3-412d-9541-81e21ab83496"
+    },
+    {
+      "id": "CAT-S2R-R1-031",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d0dff529-bbd6-49f3-b4ad-4bfe34e9ed2f",
+      "song_b": "6cbdaf1d-8e0f-4496-b29a-efd0a8939133"
+    },
+    {
+      "id": "CAT-S2R-R1-032",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f8cd4ea7-19cf-4b91-aa7a-a993a8aff873",
+      "song_b": "79abc48b-b05c-461a-8122-7824c3969a18"
+    },
+    {
+      "id": "CAT-S2R-R1-033",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0b227a1c-0765-4e08-b831-963aff51b483",
+      "song_b": "e8f1a612-197a-4b2b-9cdb-26e432c39c33"
+    },
+    {
+      "id": "CAT-S2R-R1-034",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "71f3299a-693d-4a0e-8c78-3a452fbd13fe",
+      "song_b": "c6b387dd-ee17-4eb9-83ad-cfdb74013ecc"
+    },
+    {
+      "id": "CAT-S2R-R1-035",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "89abf182-2082-4bbb-9dfa-536f5061ac7f",
+      "song_b": "c150b34a-477f-48bd-a7a0-fc7cb90bdca0"
+    },
+    {
+      "id": "CAT-S2R-R1-036",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ab62d1cf-9387-41bc-83a9-a86e47fadc2d",
+      "song_b": "f784f5a5-b428-4094-a9a6-59a440a12f2a"
+    },
+    {
+      "id": "CAT-S2R-R1-037",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "7a457305-beaa-49c8-8bc9-6e982ee628cc",
+      "song_b": "1542a1e0-9e46-417e-b76c-fc7a39936efd"
+    },
+    {
+      "id": "CAT-S2R-R1-038",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a64fcde0-b40c-48f7-a343-275e51e491d6",
+      "song_b": "f3ccf6c9-2f2b-42b1-ab43-fcb9005e71f0"
+    },
+    {
+      "id": "CAT-S2R-R1-039",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3e269b3d-4f73-4e4c-b25f-63f9efc4ea8f",
+      "song_b": "6749a684-f52e-4131-8772-6f27f128ef01"
+    },
+    {
+      "id": "CAT-S2R-R1-040",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9077e546-a5d9-410a-a4df-b1cd48cc44c0",
+      "song_b": "79325cfb-8b04-4ba0-9d5a-88d17d85677f"
+    },
+    {
+      "id": "CAT-S2R-R1-041",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "465e3d82-290b-4c7e-827c-dac9b1bbe0f4",
+      "song_b": "e1248f30-1c8f-410a-9004-e0d2aa9ea265"
+    },
+    {
+      "id": "CAT-S2R-R1-042",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "89363b23-dc9e-4308-afda-71cb5a1c27fd",
+      "song_b": "605865f1-a571-48aa-ae5a-7782f26644aa"
+    },
+    {
+      "id": "CAT-S2R-R1-043",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "83c1d308-0746-4050-bda8-eb233f95de54",
+      "song_b": "beb9b2f9-77b2-43d7-b632-9d723c9175b3"
+    },
+    {
+      "id": "CAT-S2R-R1-044",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "51b0b8f9-3962-47f7-be33-d0d8775cc703",
+      "song_b": "31a55ee7-96da-4455-ae17-f6539858d640"
+    },
+    {
+      "id": "CAT-S2R-R1-045",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b1c180dd-b13b-4b2e-bdb3-9b06fdfbdd65",
+      "song_b": "3bb8e925-34a6-4641-b1ce-fd49ac46e6f0"
+    },
+    {
+      "id": "CAT-S2R-R1-046",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "194d457f-4333-4204-959b-69bdaa6de997",
+      "song_b": "ebadd933-5390-4854-8ed6-d4b461b63a53"
+    },
+    {
+      "id": "CAT-S2R-R1-047",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f55ffb35-64ff-44ab-878c-945a2cc2b416",
+      "song_b": "604f72c0-9b9d-49bd-bcc3-d2c64dbadded"
+    },
+    {
+      "id": "CAT-S2R-R1-048",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "53654d94-047c-4b0f-89d9-14f7f34f34b7",
+      "song_b": "b87f2bba-4f25-402e-948b-ab7e9a3b2663"
+    },
+    {
+      "id": "CAT-S2R-R1-049",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "fcdf9b9a-6f88-4bd8-b75a-da5a4d39637a",
+      "song_b": "3c722273-e621-42d4-bfda-f68777d63bcd"
+    },
+    {
+      "id": "CAT-S2R-R1-050",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "704c21e3-e119-4997-93dd-72e01493fbc2",
+      "song_b": "ad2a3046-2656-4ca2-afc7-175e430a4c7a"
+    },
+    {
+      "id": "CAT-S2R-R1-051",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b2901c11-96c3-4614-bb29-f7d574d09124",
+      "song_b": "eaa152a4-4cdb-45d3-a745-fd42ad4379c1"
+    },
+    {
+      "id": "CAT-S2R-R1-052",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "26a92cde-81af-4bf2-8914-39ae73cae693",
+      "song_b": "19d45717-ddc5-4b7f-8e4a-e4665ff25b3e"
+    },
+    {
+      "id": "CAT-S2R-R1-053",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ee587e1a-ed50-454c-b59c-c96560f2b779",
+      "song_b": "ac2c59e4-1366-46e1-ae5e-5000cae6567c"
+    },
+    {
+      "id": "CAT-S2R-R1-054",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5ae29f9f-5bf9-4ebc-8c09-f22a42a95f44",
+      "song_b": "fd0d62fc-a9ba-4611-87cc-bc3412914208"
+    },
+    {
+      "id": "CAT-S2R-R1-055",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ba7f858b-1180-4904-b279-f17ca56e3b59",
+      "song_b": "b42ffdde-3c7b-4055-a645-e67f496e77d2"
+    },
+    {
+      "id": "CAT-S2R-R1-056",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0d0f19d3-7aa5-492d-9613-24663ad55ace",
+      "song_b": "87ce421e-612f-42c5-89e4-064b4b36fad8"
+    },
+    {
+      "id": "CAT-S2R-R1-057",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f22e9537-d101-4494-a060-44ff8db22eee",
+      "song_b": "f7f1377d-d943-4d43-99b8-3293e63d38e9"
+    },
+    {
+      "id": "CAT-S2R-R1-058",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8370b0df-fdb6-41e1-930b-90fc6e3ffceb",
+      "song_b": "8a9a69bb-b987-4f5b-a459-f2bd65f30ca3"
+    },
+    {
+      "id": "CAT-S2R-R1-059",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "cb920b51-ace7-42ec-ad70-45655d70ca4e",
+      "song_b": "14046994-1e7e-4fac-8ff9-3f7727157a20"
+    },
+    {
+      "id": "CAT-S2R-R1-060",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "2cd31768-677f-4a8d-b7a0-c5248d063339",
+      "song_b": "a831d40c-293c-4749-89c1-3e0949bccb12"
+    },
+    {
+      "id": "CAT-S2R-R1-061",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "071123c9-3ed0-42e6-88db-7b621e67fb75",
+      "song_b": "6acb502e-a95a-475d-b85e-5d3559de752a"
+    },
+    {
+      "id": "CAT-S2R-R1-062",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0b8b13ee-e26e-400f-98c4-1405b502ad89",
+      "song_b": "976f050c-08e4-41b4-8570-331534c88a6a"
+    },
+    {
+      "id": "CAT-S2R-R1-063",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "4374816b-07c1-456b-ad27-6cccbe34330b",
+      "song_b": "5f29f3c2-6e9c-47a5-906a-48bd62044b58"
+    },
+    {
+      "id": "CAT-S2R-R1-064",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b324eee6-370e-4dc9-8ec7-305eb3360e78",
+      "song_b": "19b09336-6d48-4a8e-be11-371f4935455a"
+    },
+    {
+      "id": "CAT-S2R-R1-065",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "20a4f802-8333-4b47-b01b-9e414618677e",
+      "song_b": "3a8f63d7-0b9b-4a29-93c8-dd56d72d9e02"
+    },
+    {
+      "id": "CAT-S2R-R1-066",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e7b58c50-c54b-4e0f-a001-c0bcc85b5ce3",
+      "song_b": "56889de0-6714-4335-b37c-d497c7c590fa"
+    },
+    {
+      "id": "CAT-S2R-R1-067",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a3e2aef1-ad9e-4367-809c-ae8bdef54c2d",
+      "song_b": "183f45b6-382a-4f8d-8e29-b70a171f82ff"
+    },
+    {
+      "id": "CAT-S2R-R1-068",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 1,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "dee269ad-2df6-4a54-a20f-759d7518c08e",
+      "song_b": "9cb251b8-42aa-4187-9fc3-19500d666120"
+    },
+    {
+      "id": "CAT-S2R-R2-001",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "674571ec-f23b-4b52-8bd1-2e54841d32e8",
+      "song_b": "13f64a79-7c8f-4a22-a73a-66ea41b76f70"
+    },
+    {
+      "id": "CAT-S2R-R2-002",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "19d45717-ddc5-4b7f-8e4a-e4665ff25b3e",
+      "song_b": "0aa34199-7d77-419c-b9fe-a14e20b85d7a"
+    },
+    {
+      "id": "CAT-S2R-R2-003",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "c6b387dd-ee17-4eb9-83ad-cfdb74013ecc",
+      "song_b": "8471efc3-aa25-4343-a50b-63d392f1b58a"
+    },
+    {
+      "id": "CAT-S2R-R2-004",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "68f80def-ff24-4133-99b7-33ea4af849d3",
+      "song_b": "21bb0535-8ee4-4a47-9730-d36952f5c826"
+    },
+    {
+      "id": "CAT-S2R-R2-005",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d7083a71-0119-45a0-a8cf-36b79a85d959",
+      "song_b": "17d7e672-18a5-4ddf-b4ca-11eb3280b4ca"
+    },
+    {
+      "id": "CAT-S2R-R2-006",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "10f5dc91-d5b5-4324-80e3-42e6a993f9ac",
+      "song_b": "194d457f-4333-4204-959b-69bdaa6de997"
+    },
+    {
+      "id": "CAT-S2R-R2-007",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "079cefa7-87f3-412d-9541-81e21ab83496",
+      "song_b": "b70618f7-f45e-4ede-9057-a955b53a6d5f"
+    },
+    {
+      "id": "CAT-S2R-R2-008",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9cb251b8-42aa-4187-9fc3-19500d666120",
+      "song_b": "9cd8d650-6b1f-4879-a81e-2d6957b849f1"
+    },
+    {
+      "id": "CAT-S2R-R2-009",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f784f5a5-b428-4094-a9a6-59a440a12f2a",
+      "song_b": "8c3bd225-dab8-4ba2-89e4-c2c22ce988e6"
+    },
+    {
+      "id": "CAT-S2R-R2-010",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d04282ba-ad61-4716-81ac-cda565895568",
+      "song_b": "2e271773-8d05-44f4-88d0-a17c04452735"
+    },
+    {
+      "id": "CAT-S2R-R2-011",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "604f72c0-9b9d-49bd-bcc3-d2c64dbadded",
+      "song_b": "51b0b8f9-3962-47f7-be33-d0d8775cc703"
+    },
+    {
+      "id": "CAT-S2R-R2-012",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "31a55ee7-96da-4455-ae17-f6539858d640",
+      "song_b": "3e269b3d-4f73-4e4c-b25f-63f9efc4ea8f"
+    },
+    {
+      "id": "CAT-S2R-R2-013",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f5d42526-2380-4a27-91be-e64f02247eac",
+      "song_b": "05946e8f-da86-4675-9be1-d6f8a0306e37"
+    },
+    {
+      "id": "CAT-S2R-R2-014",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "605865f1-a571-48aa-ae5a-7782f26644aa",
+      "song_b": "b2901c11-96c3-4614-bb29-f7d574d09124"
+    },
+    {
+      "id": "CAT-S2R-R2-015",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b87f2bba-4f25-402e-948b-ab7e9a3b2663",
+      "song_b": "6804655b-b108-4931-b143-6a5b72f75c7b"
+    },
+    {
+      "id": "CAT-S2R-R2-016",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "66d4aa91-e925-48f5-8eea-62e7f6560b6d",
+      "song_b": "456a7202-acec-4245-b57e-da2dd57b7260"
+    },
+    {
+      "id": "CAT-S2R-R2-017",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "eaa152a4-4cdb-45d3-a745-fd42ad4379c1",
+      "song_b": "bb23ddca-33d9-4b5a-ad87-7724b87c9724"
+    },
+    {
+      "id": "CAT-S2R-R2-018",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9d2d2049-3907-4868-8077-8f3a0aab3dc0",
+      "song_b": "183ae1ef-e283-4a54-b5ae-44fb8851ec78"
+    },
+    {
+      "id": "CAT-S2R-R2-019",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6cbdaf1d-8e0f-4496-b29a-efd0a8939133",
+      "song_b": "a64fcde0-b40c-48f7-a343-275e51e491d6"
+    },
+    {
+      "id": "CAT-S2R-R2-020",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "183f45b6-382a-4f8d-8e29-b70a171f82ff",
+      "song_b": "cc9224da-50f0-4d8f-9ee9-72aabe33f32b"
+    },
+    {
+      "id": "CAT-S2R-R2-021",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ad2a3046-2656-4ca2-afc7-175e430a4c7a",
+      "song_b": "f7c83c24-e813-424d-940a-09a91f00f6be"
+    },
+    {
+      "id": "CAT-S2R-R2-022",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "4d88eb5c-b383-430f-9ebc-ea28be7a1237",
+      "song_b": "b324eee6-370e-4dc9-8ec7-305eb3360e78"
+    },
+    {
+      "id": "CAT-S2R-R2-023",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ff732e02-77cd-4cc6-a4cc-6d4f3ebd6d6c",
+      "song_b": "f8cd4ea7-19cf-4b91-aa7a-a993a8aff873"
+    },
+    {
+      "id": "CAT-S2R-R2-024",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "87ce421e-612f-42c5-89e4-064b4b36fad8",
+      "song_b": "071123c9-3ed0-42e6-88db-7b621e67fb75"
+    },
+    {
+      "id": "CAT-S2R-R2-025",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "c150b34a-477f-48bd-a7a0-fc7cb90bdca0",
+      "song_b": "704c21e3-e119-4997-93dd-72e01493fbc2"
+    },
+    {
+      "id": "CAT-S2R-R2-026",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d541db96-4173-4778-9e4d-9b18e7df6c19",
+      "song_b": "2cd31768-677f-4a8d-b7a0-c5248d063339"
+    },
+    {
+      "id": "CAT-S2R-R2-027",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f3ccf6c9-2f2b-42b1-ab43-fcb9005e71f0",
+      "song_b": "0b227a1c-0765-4e08-b831-963aff51b483"
+    },
+    {
+      "id": "CAT-S2R-R2-028",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5c42a927-ffa0-45ed-abad-6dba03051b59",
+      "song_b": "b1c180dd-b13b-4b2e-bdb3-9b06fdfbdd65"
+    },
+    {
+      "id": "CAT-S2R-R2-029",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9ad673a5-7104-41e4-8d09-8deff5d5cf6f",
+      "song_b": "53654d94-047c-4b0f-89d9-14f7f34f34b7"
+    },
+    {
+      "id": "CAT-S2R-R2-030",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ac2c59e4-1366-46e1-ae5e-5000cae6567c",
+      "song_b": "f24675cb-d429-4bd0-964d-ccca32725ad7"
+    },
+    {
+      "id": "CAT-S2R-R2-031",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5ab1b9bd-f86a-4a64-99a7-7956bdb63677",
+      "song_b": "5ae29f9f-5bf9-4ebc-8c09-f22a42a95f44"
+    },
+    {
+      "id": "CAT-S2R-R2-032",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a421facf-901b-4ca4-82ec-92797f9c980f",
+      "song_b": "83c1d308-0746-4050-bda8-eb233f95de54"
+    },
+    {
+      "id": "CAT-S2R-R2-033",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8a586691-892d-481f-82b6-b46a41a27f8c",
+      "song_b": "7a457305-beaa-49c8-8bc9-6e982ee628cc"
+    },
+    {
+      "id": "CAT-S2R-R2-034",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3bb8e925-34a6-4641-b1ce-fd49ac46e6f0",
+      "song_b": "ee2b2cfa-246f-4e09-b8ae-8899938223c4"
+    },
+    {
+      "id": "CAT-S2R-R2-035",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e1248f30-1c8f-410a-9004-e0d2aa9ea265",
+      "song_b": "e1583bf2-0f4a-48d6-8095-dd3ebba06b5b"
+    },
+    {
+      "id": "CAT-S2R-R2-036",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "67b787a9-206a-4f7d-8d52-cddb0c0b5c7c",
+      "song_b": "126d00bb-dff2-45f4-a48b-7434e44eb7c7"
+    },
+    {
+      "id": "CAT-S2R-R2-037",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "91c85e62-2438-4149-a399-1f407b0b9db1",
+      "song_b": "ba7f858b-1180-4904-b279-f17ca56e3b59"
+    },
+    {
+      "id": "CAT-S2R-R2-038",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "56889de0-6714-4335-b37c-d497c7c590fa",
+      "song_b": "aa25dfbc-3308-4c3d-9548-f98dbd147ec8"
+    },
+    {
+      "id": "CAT-S2R-R2-039",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "724ce8da-5989-479e-8246-1fc63db27fb0",
+      "song_b": "fcdf9b9a-6f88-4bd8-b75a-da5a4d39637a"
+    },
+    {
+      "id": "CAT-S2R-R2-040",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "54b6f95b-654a-4f11-ac7d-de36a01926bd",
+      "song_b": "ee587e1a-ed50-454c-b59c-c96560f2b779"
+    },
+    {
+      "id": "CAT-S2R-R2-041",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8c0f2e39-07ce-4c4e-9d58-0864d30a3608",
+      "song_b": "20a4f802-8333-4b47-b01b-9e414618677e"
+    },
+    {
+      "id": "CAT-S2R-R2-042",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "14046994-1e7e-4fac-8ff9-3f7727157a20",
+      "song_b": "91c6043e-2609-4adf-b67d-56ba7f4d507d"
+    },
+    {
+      "id": "CAT-S2R-R2-043",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5f29f3c2-6e9c-47a5-906a-48bd62044b58",
+      "song_b": "d0dff529-bbd6-49f3-b4ad-4bfe34e9ed2f"
+    },
+    {
+      "id": "CAT-S2R-R2-044",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "976f050c-08e4-41b4-8570-331534c88a6a",
+      "song_b": "af0a3ae0-f865-4982-bc65-f97e035c7c39"
+    },
+    {
+      "id": "CAT-S2R-R2-045",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8a9a69bb-b987-4f5b-a459-f2bd65f30ca3",
+      "song_b": "ab62d1cf-9387-41bc-83a9-a86e47fadc2d"
+    },
+    {
+      "id": "CAT-S2R-R2-046",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "79abc48b-b05c-461a-8122-7824c3969a18",
+      "song_b": "f22e9537-d101-4494-a060-44ff8db22eee"
+    },
+    {
+      "id": "CAT-S2R-R2-047",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "79325cfb-8b04-4ba0-9d5a-88d17d85677f",
+      "song_b": "26a92cde-81af-4bf2-8914-39ae73cae693"
+    },
+    {
+      "id": "CAT-S2R-R2-048",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "fd0d62fc-a9ba-4611-87cc-bc3412914208",
+      "song_b": "465e3d82-290b-4c7e-827c-dac9b1bbe0f4"
+    },
+    {
+      "id": "CAT-S2R-R2-049",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6acb502e-a95a-475d-b85e-5d3559de752a",
+      "song_b": "e7b58c50-c54b-4e0f-a001-c0bcc85b5ce3"
+    },
+    {
+      "id": "CAT-S2R-R2-050",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "beb9b2f9-77b2-43d7-b632-9d723c9175b3",
+      "song_b": "3e0f269a-d61f-49f9-8c7e-4ddd1be3b0bb"
+    },
+    {
+      "id": "CAT-S2R-R2-051",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f7f1377d-d943-4d43-99b8-3293e63d38e9",
+      "song_b": "dcb796f2-e6ef-4680-a8da-29a63965a6a7"
+    },
+    {
+      "id": "CAT-S2R-R2-052",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3c722273-e621-42d4-bfda-f68777d63bcd",
+      "song_b": "fbf20f1a-c6f3-467b-be92-3b807b8347e1"
+    },
+    {
+      "id": "CAT-S2R-R2-053",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9d3e2115-b51a-412e-a8fe-de0a44bd3ef4",
+      "song_b": "cb920b51-ace7-42ec-ad70-45655d70ca4e"
+    },
+    {
+      "id": "CAT-S2R-R2-054",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e8f1a612-197a-4b2b-9cdb-26e432c39c33",
+      "song_b": "8370b0df-fdb6-41e1-930b-90fc6e3ffceb"
+    },
+    {
+      "id": "CAT-S2R-R2-055",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "19b09336-6d48-4a8e-be11-371f4935455a",
+      "song_b": "a3e2aef1-ad9e-4367-809c-ae8bdef54c2d"
+    },
+    {
+      "id": "CAT-S2R-R2-056",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3a8f63d7-0b9b-4a29-93c8-dd56d72d9e02",
+      "song_b": "dee269ad-2df6-4a54-a20f-759d7518c08e"
+    },
+    {
+      "id": "CAT-S2R-R2-057",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "2bd58e5c-c33f-499d-9647-a0c6e19f78cb",
+      "song_b": "3be3bce6-1bb5-40bb-b1bb-1cc753886458"
+    },
+    {
+      "id": "CAT-S2R-R2-058",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5f51bc3a-e672-4680-85bd-de79fbdae5e6",
+      "song_b": "e02b1616-8a0c-4e79-9384-c7dd2774def9"
+    },
+    {
+      "id": "CAT-S2R-R2-059",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e13dea18-46c4-48ca-aced-aabb55b95d6c",
+      "song_b": "0b8b13ee-e26e-400f-98c4-1405b502ad89"
+    },
+    {
+      "id": "CAT-S2R-R2-060",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ebadd933-5390-4854-8ed6-d4b461b63a53",
+      "song_b": "f55ffb35-64ff-44ab-878c-945a2cc2b416"
+    },
+    {
+      "id": "CAT-S2R-R2-061",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a71983ac-0cd1-400b-a505-66e06cafd20f",
+      "song_b": "71f3299a-693d-4a0e-8c78-3a452fbd13fe"
+    },
+    {
+      "id": "CAT-S2R-R2-062",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a831d40c-293c-4749-89c1-3e0949bccb12",
+      "song_b": "89abf182-2082-4bbb-9dfa-536f5061ac7f"
+    },
+    {
+      "id": "CAT-S2R-R2-063",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "81d9052d-09f1-4ef3-8ddc-9018d9f022c7",
+      "song_b": "9077e546-a5d9-410a-a4df-b1cd48cc44c0"
+    },
+    {
+      "id": "CAT-S2R-R2-064",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "17fb9089-89c0-462f-a44b-41603b5f82ef",
+      "song_b": "4374816b-07c1-456b-ad27-6cccbe34330b"
+    },
+    {
+      "id": "CAT-S2R-R2-065",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b42ffdde-3c7b-4055-a645-e67f496e77d2",
+      "song_b": "8cdd9a66-3951-471c-b560-f1d8f48acf99"
+    },
+    {
+      "id": "CAT-S2R-R2-066",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "1542a1e0-9e46-417e-b76c-fc7a39936efd",
+      "song_b": "a4338891-06e8-47f4-9f96-009f2e9a1356"
+    },
+    {
+      "id": "CAT-S2R-R2-067",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6749a684-f52e-4131-8772-6f27f128ef01",
+      "song_b": "0d0f19d3-7aa5-492d-9613-24663ad55ace"
+    },
+    {
+      "id": "CAT-S2R-R2-068",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 2,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b3e99c19-e4d4-4a15-8ffa-1117ff2bd062",
+      "song_b": "89363b23-dc9e-4308-afda-71cb5a1c27fd"
+    },
+    {
+      "id": "CAT-S2R-R3-001",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "194d457f-4333-4204-959b-69bdaa6de997",
+      "song_b": "ff732e02-77cd-4cc6-a4cc-6d4f3ebd6d6c"
+    },
+    {
+      "id": "CAT-S2R-R3-002",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9077e546-a5d9-410a-a4df-b1cd48cc44c0",
+      "song_b": "183ae1ef-e283-4a54-b5ae-44fb8851ec78"
+    },
+    {
+      "id": "CAT-S2R-R3-003",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f784f5a5-b428-4094-a9a6-59a440a12f2a",
+      "song_b": "4d88eb5c-b383-430f-9ebc-ea28be7a1237"
+    },
+    {
+      "id": "CAT-S2R-R3-004",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d541db96-4173-4778-9e4d-9b18e7df6c19",
+      "song_b": "c6b387dd-ee17-4eb9-83ad-cfdb74013ecc"
+    },
+    {
+      "id": "CAT-S2R-R3-005",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "13f64a79-7c8f-4a22-a73a-66ea41b76f70",
+      "song_b": "f24675cb-d429-4bd0-964d-ccca32725ad7"
+    },
+    {
+      "id": "CAT-S2R-R3-006",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f3ccf6c9-2f2b-42b1-ab43-fcb9005e71f0",
+      "song_b": "87ce421e-612f-42c5-89e4-064b4b36fad8"
+    },
+    {
+      "id": "CAT-S2R-R3-007",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "2e271773-8d05-44f4-88d0-a17c04452735",
+      "song_b": "05946e8f-da86-4675-9be1-d6f8a0306e37"
+    },
+    {
+      "id": "CAT-S2R-R3-008",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "079cefa7-87f3-412d-9541-81e21ab83496",
+      "song_b": "7a457305-beaa-49c8-8bc9-6e982ee628cc"
+    },
+    {
+      "id": "CAT-S2R-R3-009",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9cb251b8-42aa-4187-9fc3-19500d666120",
+      "song_b": "cc9224da-50f0-4d8f-9ee9-72aabe33f32b"
+    },
+    {
+      "id": "CAT-S2R-R3-010",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9d2d2049-3907-4868-8077-8f3a0aab3dc0",
+      "song_b": "66d4aa91-e925-48f5-8eea-62e7f6560b6d"
+    },
+    {
+      "id": "CAT-S2R-R3-011",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "eaa152a4-4cdb-45d3-a745-fd42ad4379c1",
+      "song_b": "26a92cde-81af-4bf2-8914-39ae73cae693"
+    },
+    {
+      "id": "CAT-S2R-R3-012",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b2901c11-96c3-4614-bb29-f7d574d09124",
+      "song_b": "68f80def-ff24-4133-99b7-33ea4af849d3"
+    },
+    {
+      "id": "CAT-S2R-R3-013",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "83c1d308-0746-4050-bda8-eb233f95de54",
+      "song_b": "9ad673a5-7104-41e4-8d09-8deff5d5cf6f"
+    },
+    {
+      "id": "CAT-S2R-R3-014",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f7c83c24-e813-424d-940a-09a91f00f6be",
+      "song_b": "b1c180dd-b13b-4b2e-bdb3-9b06fdfbdd65"
+    },
+    {
+      "id": "CAT-S2R-R3-015",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a64fcde0-b40c-48f7-a343-275e51e491d6",
+      "song_b": "c150b34a-477f-48bd-a7a0-fc7cb90bdca0"
+    },
+    {
+      "id": "CAT-S2R-R3-016",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d7083a71-0119-45a0-a8cf-36b79a85d959",
+      "song_b": "5f29f3c2-6e9c-47a5-906a-48bd62044b58"
+    },
+    {
+      "id": "CAT-S2R-R3-017",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b324eee6-370e-4dc9-8ec7-305eb3360e78",
+      "song_b": "6804655b-b108-4931-b143-6a5b72f75c7b"
+    },
+    {
+      "id": "CAT-S2R-R3-018",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "19d45717-ddc5-4b7f-8e4a-e4665ff25b3e",
+      "song_b": "3e269b3d-4f73-4e4c-b25f-63f9efc4ea8f"
+    },
+    {
+      "id": "CAT-S2R-R3-019",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "704c21e3-e119-4997-93dd-72e01493fbc2",
+      "song_b": "724ce8da-5989-479e-8246-1fc63db27fb0"
+    },
+    {
+      "id": "CAT-S2R-R3-020",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ad2a3046-2656-4ca2-afc7-175e430a4c7a",
+      "song_b": "604f72c0-9b9d-49bd-bcc3-d2c64dbadded"
+    },
+    {
+      "id": "CAT-S2R-R3-021",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8a586691-892d-481f-82b6-b46a41a27f8c",
+      "song_b": "8471efc3-aa25-4343-a50b-63d392f1b58a"
+    },
+    {
+      "id": "CAT-S2R-R3-022",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b87f2bba-4f25-402e-948b-ab7e9a3b2663",
+      "song_b": "674571ec-f23b-4b52-8bd1-2e54841d32e8"
+    },
+    {
+      "id": "CAT-S2R-R3-023",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "17d7e672-18a5-4ddf-b4ca-11eb3280b4ca",
+      "song_b": "f5d42526-2380-4a27-91be-e64f02247eac"
+    },
+    {
+      "id": "CAT-S2R-R3-024",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "071123c9-3ed0-42e6-88db-7b621e67fb75",
+      "song_b": "10f5dc91-d5b5-4324-80e3-42e6a993f9ac"
+    },
+    {
+      "id": "CAT-S2R-R3-025",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "fcdf9b9a-6f88-4bd8-b75a-da5a4d39637a",
+      "song_b": "9cd8d650-6b1f-4879-a81e-2d6957b849f1"
+    },
+    {
+      "id": "CAT-S2R-R3-026",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e7b58c50-c54b-4e0f-a001-c0bcc85b5ce3",
+      "song_b": "6cbdaf1d-8e0f-4496-b29a-efd0a8939133"
+    },
+    {
+      "id": "CAT-S2R-R3-027",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "183f45b6-382a-4f8d-8e29-b70a171f82ff",
+      "song_b": "5c42a927-ffa0-45ed-abad-6dba03051b59"
+    },
+    {
+      "id": "CAT-S2R-R3-028",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b70618f7-f45e-4ede-9057-a955b53a6d5f",
+      "song_b": "456a7202-acec-4245-b57e-da2dd57b7260"
+    },
+    {
+      "id": "CAT-S2R-R3-029",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "2cd31768-677f-4a8d-b7a0-c5248d063339",
+      "song_b": "8c0f2e39-07ce-4c4e-9d58-0864d30a3608"
+    },
+    {
+      "id": "CAT-S2R-R3-030",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f8cd4ea7-19cf-4b91-aa7a-a993a8aff873",
+      "song_b": "605865f1-a571-48aa-ae5a-7782f26644aa"
+    },
+    {
+      "id": "CAT-S2R-R3-031",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5f51bc3a-e672-4680-85bd-de79fbdae5e6",
+      "song_b": "aa25dfbc-3308-4c3d-9548-f98dbd147ec8"
+    },
+    {
+      "id": "CAT-S2R-R3-032",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3bb8e925-34a6-4641-b1ce-fd49ac46e6f0",
+      "song_b": "9d3e2115-b51a-412e-a8fe-de0a44bd3ef4"
+    },
+    {
+      "id": "CAT-S2R-R3-033",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "79325cfb-8b04-4ba0-9d5a-88d17d85677f",
+      "song_b": "0aa34199-7d77-419c-b9fe-a14e20b85d7a"
+    },
+    {
+      "id": "CAT-S2R-R3-034",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "31a55ee7-96da-4455-ae17-f6539858d640",
+      "song_b": "91c85e62-2438-4149-a399-1f407b0b9db1"
+    },
+    {
+      "id": "CAT-S2R-R3-035",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "71f3299a-693d-4a0e-8c78-3a452fbd13fe",
+      "song_b": "126d00bb-dff2-45f4-a48b-7434e44eb7c7"
+    },
+    {
+      "id": "CAT-S2R-R3-036",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "21bb0535-8ee4-4a47-9730-d36952f5c826",
+      "song_b": "af0a3ae0-f865-4982-bc65-f97e035c7c39"
+    },
+    {
+      "id": "CAT-S2R-R3-037",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e1583bf2-0f4a-48d6-8095-dd3ebba06b5b",
+      "song_b": "cb920b51-ace7-42ec-ad70-45655d70ca4e"
+    },
+    {
+      "id": "CAT-S2R-R3-038",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "53654d94-047c-4b0f-89d9-14f7f34f34b7",
+      "song_b": "0b227a1c-0765-4e08-b831-963aff51b483"
+    },
+    {
+      "id": "CAT-S2R-R3-039",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ee587e1a-ed50-454c-b59c-c96560f2b779",
+      "song_b": "b3e99c19-e4d4-4a15-8ffa-1117ff2bd062"
+    },
+    {
+      "id": "CAT-S2R-R3-040",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b42ffdde-3c7b-4055-a645-e67f496e77d2",
+      "song_b": "91c6043e-2609-4adf-b67d-56ba7f4d507d"
+    },
+    {
+      "id": "CAT-S2R-R3-041",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "465e3d82-290b-4c7e-827c-dac9b1bbe0f4",
+      "song_b": "89363b23-dc9e-4308-afda-71cb5a1c27fd"
+    },
+    {
+      "id": "CAT-S2R-R3-042",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d0dff529-bbd6-49f3-b4ad-4bfe34e9ed2f",
+      "song_b": "8370b0df-fdb6-41e1-930b-90fc6e3ffceb"
+    },
+    {
+      "id": "CAT-S2R-R3-043",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f7f1377d-d943-4d43-99b8-3293e63d38e9",
+      "song_b": "54b6f95b-654a-4f11-ac7d-de36a01926bd"
+    },
+    {
+      "id": "CAT-S2R-R3-044",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5ae29f9f-5bf9-4ebc-8c09-f22a42a95f44",
+      "song_b": "8c3bd225-dab8-4ba2-89e4-c2c22ce988e6"
+    },
+    {
+      "id": "CAT-S2R-R3-045",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8a9a69bb-b987-4f5b-a459-f2bd65f30ca3",
+      "song_b": "3a8f63d7-0b9b-4a29-93c8-dd56d72d9e02"
+    },
+    {
+      "id": "CAT-S2R-R3-046",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0b8b13ee-e26e-400f-98c4-1405b502ad89",
+      "song_b": "1542a1e0-9e46-417e-b76c-fc7a39936efd"
+    },
+    {
+      "id": "CAT-S2R-R3-047",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "beb9b2f9-77b2-43d7-b632-9d723c9175b3",
+      "song_b": "6acb502e-a95a-475d-b85e-5d3559de752a"
+    },
+    {
+      "id": "CAT-S2R-R3-048",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "67b787a9-206a-4f7d-8d52-cddb0c0b5c7c",
+      "song_b": "17fb9089-89c0-462f-a44b-41603b5f82ef"
+    },
+    {
+      "id": "CAT-S2R-R3-049",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "79abc48b-b05c-461a-8122-7824c3969a18",
+      "song_b": "6749a684-f52e-4131-8772-6f27f128ef01"
+    },
+    {
+      "id": "CAT-S2R-R3-050",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "19b09336-6d48-4a8e-be11-371f4935455a",
+      "song_b": "3e0f269a-d61f-49f9-8c7e-4ddd1be3b0bb"
+    },
+    {
+      "id": "CAT-S2R-R3-051",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "51b0b8f9-3962-47f7-be33-d0d8775cc703",
+      "song_b": "2bd58e5c-c33f-499d-9647-a0c6e19f78cb"
+    },
+    {
+      "id": "CAT-S2R-R3-052",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "89abf182-2082-4bbb-9dfa-536f5061ac7f",
+      "song_b": "56889de0-6714-4335-b37c-d497c7c590fa"
+    },
+    {
+      "id": "CAT-S2R-R3-053",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3c722273-e621-42d4-bfda-f68777d63bcd",
+      "song_b": "5ab1b9bd-f86a-4a64-99a7-7956bdb63677"
+    },
+    {
+      "id": "CAT-S2R-R3-054",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ac2c59e4-1366-46e1-ae5e-5000cae6567c",
+      "song_b": "f55ffb35-64ff-44ab-878c-945a2cc2b416"
+    },
+    {
+      "id": "CAT-S2R-R3-055",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a71983ac-0cd1-400b-a505-66e06cafd20f",
+      "song_b": "4374816b-07c1-456b-ad27-6cccbe34330b"
+    },
+    {
+      "id": "CAT-S2R-R3-056",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "14046994-1e7e-4fac-8ff9-3f7727157a20",
+      "song_b": "d04282ba-ad61-4716-81ac-cda565895568"
+    },
+    {
+      "id": "CAT-S2R-R3-057",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "976f050c-08e4-41b4-8570-331534c88a6a",
+      "song_b": "a4338891-06e8-47f4-9f96-009f2e9a1356"
+    },
+    {
+      "id": "CAT-S2R-R3-058",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a3e2aef1-ad9e-4367-809c-ae8bdef54c2d",
+      "song_b": "8cdd9a66-3951-471c-b560-f1d8f48acf99"
+    },
+    {
+      "id": "CAT-S2R-R3-059",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "dcb796f2-e6ef-4680-a8da-29a63965a6a7",
+      "song_b": "3be3bce6-1bb5-40bb-b1bb-1cc753886458"
+    },
+    {
+      "id": "CAT-S2R-R3-060",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "fd0d62fc-a9ba-4611-87cc-bc3412914208",
+      "song_b": "ab62d1cf-9387-41bc-83a9-a86e47fadc2d"
+    },
+    {
+      "id": "CAT-S2R-R3-061",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "dee269ad-2df6-4a54-a20f-759d7518c08e",
+      "song_b": "a421facf-901b-4ca4-82ec-92797f9c980f"
+    },
+    {
+      "id": "CAT-S2R-R3-062",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e1248f30-1c8f-410a-9004-e0d2aa9ea265",
+      "song_b": "e8f1a612-197a-4b2b-9cdb-26e432c39c33"
+    },
+    {
+      "id": "CAT-S2R-R3-063",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "20a4f802-8333-4b47-b01b-9e414618677e",
+      "song_b": "ee2b2cfa-246f-4e09-b8ae-8899938223c4"
+    },
+    {
+      "id": "CAT-S2R-R3-064",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a831d40c-293c-4749-89c1-3e0949bccb12",
+      "song_b": "e02b1616-8a0c-4e79-9384-c7dd2774def9"
+    },
+    {
+      "id": "CAT-S2R-R3-065",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ba7f858b-1180-4904-b279-f17ca56e3b59",
+      "song_b": "0d0f19d3-7aa5-492d-9613-24663ad55ace"
+    },
+    {
+      "id": "CAT-S2R-R3-066",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f22e9537-d101-4494-a060-44ff8db22eee",
+      "song_b": "fbf20f1a-c6f3-467b-be92-3b807b8347e1"
+    },
+    {
+      "id": "CAT-S2R-R3-067",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e13dea18-46c4-48ca-aced-aabb55b95d6c",
+      "song_b": "ebadd933-5390-4854-8ed6-d4b461b63a53"
+    },
+    {
+      "id": "CAT-S2R-R3-068",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 3,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "81d9052d-09f1-4ef3-8ddc-9018d9f022c7",
+      "song_b": "bb23ddca-33d9-4b5a-ad87-7724b87c9724"
+    },
+    {
+      "id": "CAT-S2R-R4-001",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f5d42526-2380-4a27-91be-e64f02247eac",
+      "song_b": "19d45717-ddc5-4b7f-8e4a-e4665ff25b3e"
+    },
+    {
+      "id": "CAT-S2R-R4-002",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "05946e8f-da86-4675-9be1-d6f8a0306e37",
+      "song_b": "d7083a71-0119-45a0-a8cf-36b79a85d959"
+    },
+    {
+      "id": "CAT-S2R-R4-003",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "c150b34a-477f-48bd-a7a0-fc7cb90bdca0",
+      "song_b": "21bb0535-8ee4-4a47-9730-d36952f5c826"
+    },
+    {
+      "id": "CAT-S2R-R4-004",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8c3bd225-dab8-4ba2-89e4-c2c22ce988e6",
+      "song_b": "194d457f-4333-4204-959b-69bdaa6de997"
+    },
+    {
+      "id": "CAT-S2R-R4-005",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6cbdaf1d-8e0f-4496-b29a-efd0a8939133",
+      "song_b": "13f64a79-7c8f-4a22-a73a-66ea41b76f70"
+    },
+    {
+      "id": "CAT-S2R-R4-006",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9cd8d650-6b1f-4879-a81e-2d6957b849f1",
+      "song_b": "f8cd4ea7-19cf-4b91-aa7a-a993a8aff873"
+    },
+    {
+      "id": "CAT-S2R-R4-007",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "7a457305-beaa-49c8-8bc9-6e982ee628cc",
+      "song_b": "9d2d2049-3907-4868-8077-8f3a0aab3dc0"
+    },
+    {
+      "id": "CAT-S2R-R4-008",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6804655b-b108-4931-b143-6a5b72f75c7b",
+      "song_b": "9077e546-a5d9-410a-a4df-b1cd48cc44c0"
+    },
+    {
+      "id": "CAT-S2R-R4-009",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "87ce421e-612f-42c5-89e4-064b4b36fad8",
+      "song_b": "079cefa7-87f3-412d-9541-81e21ab83496"
+    },
+    {
+      "id": "CAT-S2R-R4-010",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "bb23ddca-33d9-4b5a-ad87-7724b87c9724",
+      "song_b": "31a55ee7-96da-4455-ae17-f6539858d640"
+    },
+    {
+      "id": "CAT-S2R-R4-011",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5c42a927-ffa0-45ed-abad-6dba03051b59",
+      "song_b": "51b0b8f9-3962-47f7-be33-d0d8775cc703"
+    },
+    {
+      "id": "CAT-S2R-R4-012",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "724ce8da-5989-479e-8246-1fc63db27fb0",
+      "song_b": "83c1d308-0746-4050-bda8-eb233f95de54"
+    },
+    {
+      "id": "CAT-S2R-R4-013",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8471efc3-aa25-4343-a50b-63d392f1b58a",
+      "song_b": "f784f5a5-b428-4094-a9a6-59a440a12f2a"
+    },
+    {
+      "id": "CAT-S2R-R4-014",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "cc9224da-50f0-4d8f-9ee9-72aabe33f32b",
+      "song_b": "704c21e3-e119-4997-93dd-72e01493fbc2"
+    },
+    {
+      "id": "CAT-S2R-R4-015",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b1c180dd-b13b-4b2e-bdb3-9b06fdfbdd65",
+      "song_b": "d541db96-4173-4778-9e4d-9b18e7df6c19"
+    },
+    {
+      "id": "CAT-S2R-R4-016",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0b227a1c-0765-4e08-b831-963aff51b483",
+      "song_b": "ad2a3046-2656-4ca2-afc7-175e430a4c7a"
+    },
+    {
+      "id": "CAT-S2R-R4-017",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0aa34199-7d77-419c-b9fe-a14e20b85d7a",
+      "song_b": "8a586691-892d-481f-82b6-b46a41a27f8c"
+    },
+    {
+      "id": "CAT-S2R-R4-018",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "c6b387dd-ee17-4eb9-83ad-cfdb74013ecc",
+      "song_b": "2e271773-8d05-44f4-88d0-a17c04452735"
+    },
+    {
+      "id": "CAT-S2R-R4-019",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f24675cb-d429-4bd0-964d-ccca32725ad7",
+      "song_b": "a64fcde0-b40c-48f7-a343-275e51e491d6"
+    },
+    {
+      "id": "CAT-S2R-R4-020",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "674571ec-f23b-4b52-8bd1-2e54841d32e8",
+      "song_b": "9cb251b8-42aa-4187-9fc3-19500d666120"
+    },
+    {
+      "id": "CAT-S2R-R4-021",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5f29f3c2-6e9c-47a5-906a-48bd62044b58",
+      "song_b": "b70618f7-f45e-4ede-9057-a955b53a6d5f"
+    },
+    {
+      "id": "CAT-S2R-R4-022",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "26a92cde-81af-4bf2-8914-39ae73cae693",
+      "song_b": "183f45b6-382a-4f8d-8e29-b70a171f82ff"
+    },
+    {
+      "id": "CAT-S2R-R4-023",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "605865f1-a571-48aa-ae5a-7782f26644aa",
+      "song_b": "b324eee6-370e-4dc9-8ec7-305eb3360e78"
+    },
+    {
+      "id": "CAT-S2R-R4-024",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "10f5dc91-d5b5-4324-80e3-42e6a993f9ac",
+      "song_b": "79325cfb-8b04-4ba0-9d5a-88d17d85677f"
+    },
+    {
+      "id": "CAT-S2R-R4-025",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "66d4aa91-e925-48f5-8eea-62e7f6560b6d",
+      "song_b": "5ae29f9f-5bf9-4ebc-8c09-f22a42a95f44"
+    },
+    {
+      "id": "CAT-S2R-R4-026",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9ad673a5-7104-41e4-8d09-8deff5d5cf6f",
+      "song_b": "465e3d82-290b-4c7e-827c-dac9b1bbe0f4"
+    },
+    {
+      "id": "CAT-S2R-R4-027",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "68f80def-ff24-4133-99b7-33ea4af849d3",
+      "song_b": "071123c9-3ed0-42e6-88db-7b621e67fb75"
+    },
+    {
+      "id": "CAT-S2R-R4-028",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ff732e02-77cd-4cc6-a4cc-6d4f3ebd6d6c",
+      "song_b": "53654d94-047c-4b0f-89d9-14f7f34f34b7"
+    },
+    {
+      "id": "CAT-S2R-R4-029",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "aa25dfbc-3308-4c3d-9548-f98dbd147ec8",
+      "song_b": "f3ccf6c9-2f2b-42b1-ab43-fcb9005e71f0"
+    },
+    {
+      "id": "CAT-S2R-R4-030",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "d04282ba-ad61-4716-81ac-cda565895568",
+      "song_b": "e1583bf2-0f4a-48d6-8095-dd3ebba06b5b"
+    },
+    {
+      "id": "CAT-S2R-R4-031",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8c0f2e39-07ce-4c4e-9d58-0864d30a3608",
+      "song_b": "ac2c59e4-1366-46e1-ae5e-5000cae6567c"
+    },
+    {
+      "id": "CAT-S2R-R4-032",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "183ae1ef-e283-4a54-b5ae-44fb8851ec78",
+      "song_b": "3bb8e925-34a6-4641-b1ce-fd49ac46e6f0"
+    },
+    {
+      "id": "CAT-S2R-R4-033",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "0d0f19d3-7aa5-492d-9613-24663ad55ace",
+      "song_b": "b2901c11-96c3-4614-bb29-f7d574d09124"
+    },
+    {
+      "id": "CAT-S2R-R4-034",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "b3e99c19-e4d4-4a15-8ffa-1117ff2bd062",
+      "song_b": "2cd31768-677f-4a8d-b7a0-c5248d063339"
+    },
+    {
+      "id": "CAT-S2R-R4-035",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "604f72c0-9b9d-49bd-bcc3-d2c64dbadded",
+      "song_b": "14046994-1e7e-4fac-8ff9-3f7727157a20"
+    },
+    {
+      "id": "CAT-S2R-R4-036",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "54b6f95b-654a-4f11-ac7d-de36a01926bd",
+      "song_b": "20a4f802-8333-4b47-b01b-9e414618677e"
+    },
+    {
+      "id": "CAT-S2R-R4-037",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "89363b23-dc9e-4308-afda-71cb5a1c27fd",
+      "song_b": "3c722273-e621-42d4-bfda-f68777d63bcd"
+    },
+    {
+      "id": "CAT-S2R-R4-038",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "4d88eb5c-b383-430f-9ebc-ea28be7a1237",
+      "song_b": "976f050c-08e4-41b4-8570-331534c88a6a"
+    },
+    {
+      "id": "CAT-S2R-R4-039",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "56889de0-6714-4335-b37c-d497c7c590fa",
+      "song_b": "a71983ac-0cd1-400b-a505-66e06cafd20f"
+    },
+    {
+      "id": "CAT-S2R-R4-040",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a4338891-06e8-47f4-9f96-009f2e9a1356",
+      "song_b": "8a9a69bb-b987-4f5b-a459-f2bd65f30ca3"
+    },
+    {
+      "id": "CAT-S2R-R4-041",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3e269b3d-4f73-4e4c-b25f-63f9efc4ea8f",
+      "song_b": "b42ffdde-3c7b-4055-a645-e67f496e77d2"
+    },
+    {
+      "id": "CAT-S2R-R4-042",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "126d00bb-dff2-45f4-a48b-7434e44eb7c7",
+      "song_b": "19b09336-6d48-4a8e-be11-371f4935455a"
+    },
+    {
+      "id": "CAT-S2R-R4-043",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "91c85e62-2438-4149-a399-1f407b0b9db1",
+      "song_b": "f22e9537-d101-4494-a060-44ff8db22eee"
+    },
+    {
+      "id": "CAT-S2R-R4-044",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "af0a3ae0-f865-4982-bc65-f97e035c7c39",
+      "song_b": "a831d40c-293c-4749-89c1-3e0949bccb12"
+    },
+    {
+      "id": "CAT-S2R-R4-045",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "9d3e2115-b51a-412e-a8fe-de0a44bd3ef4",
+      "song_b": "0b8b13ee-e26e-400f-98c4-1405b502ad89"
+    },
+    {
+      "id": "CAT-S2R-R4-046",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e8f1a612-197a-4b2b-9cdb-26e432c39c33",
+      "song_b": "67b787a9-206a-4f7d-8d52-cddb0c0b5c7c"
+    },
+    {
+      "id": "CAT-S2R-R4-047",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "2bd58e5c-c33f-499d-9647-a0c6e19f78cb",
+      "song_b": "beb9b2f9-77b2-43d7-b632-9d723c9175b3"
+    },
+    {
+      "id": "CAT-S2R-R4-048",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8370b0df-fdb6-41e1-930b-90fc6e3ffceb",
+      "song_b": "5f51bc3a-e672-4680-85bd-de79fbdae5e6"
+    },
+    {
+      "id": "CAT-S2R-R4-049",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ebadd933-5390-4854-8ed6-d4b461b63a53",
+      "song_b": "dcb796f2-e6ef-4680-a8da-29a63965a6a7"
+    },
+    {
+      "id": "CAT-S2R-R4-050",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "4374816b-07c1-456b-ad27-6cccbe34330b",
+      "song_b": "dee269ad-2df6-4a54-a20f-759d7518c08e"
+    },
+    {
+      "id": "CAT-S2R-R4-051",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6749a684-f52e-4131-8772-6f27f128ef01",
+      "song_b": "e1248f30-1c8f-410a-9004-e0d2aa9ea265"
+    },
+    {
+      "id": "CAT-S2R-R4-052",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ab62d1cf-9387-41bc-83a9-a86e47fadc2d",
+      "song_b": "e7b58c50-c54b-4e0f-a001-c0bcc85b5ce3"
+    },
+    {
+      "id": "CAT-S2R-R4-053",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "8cdd9a66-3951-471c-b560-f1d8f48acf99",
+      "song_b": "ba7f858b-1180-4904-b279-f17ca56e3b59"
+    },
+    {
+      "id": "CAT-S2R-R4-054",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3be3bce6-1bb5-40bb-b1bb-1cc753886458",
+      "song_b": "89abf182-2082-4bbb-9dfa-536f5061ac7f"
+    },
+    {
+      "id": "CAT-S2R-R4-055",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "cb920b51-ace7-42ec-ad70-45655d70ca4e",
+      "song_b": "a3e2aef1-ad9e-4367-809c-ae8bdef54c2d"
+    },
+    {
+      "id": "CAT-S2R-R4-056",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "1542a1e0-9e46-417e-b76c-fc7a39936efd",
+      "song_b": "f7f1377d-d943-4d43-99b8-3293e63d38e9"
+    },
+    {
+      "id": "CAT-S2R-R4-057",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3a8f63d7-0b9b-4a29-93c8-dd56d72d9e02",
+      "song_b": "79abc48b-b05c-461a-8122-7824c3969a18"
+    },
+    {
+      "id": "CAT-S2R-R4-058",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "3e0f269a-d61f-49f9-8c7e-4ddd1be3b0bb",
+      "song_b": "eaa152a4-4cdb-45d3-a745-fd42ad4379c1"
+    },
+    {
+      "id": "CAT-S2R-R4-059",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "91c6043e-2609-4adf-b67d-56ba7f4d507d",
+      "song_b": "ee587e1a-ed50-454c-b59c-c96560f2b779"
+    },
+    {
+      "id": "CAT-S2R-R4-060",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "6acb502e-a95a-475d-b85e-5d3559de752a",
+      "song_b": "71f3299a-693d-4a0e-8c78-3a452fbd13fe"
+    },
+    {
+      "id": "CAT-S2R-R4-061",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "e02b1616-8a0c-4e79-9384-c7dd2774def9",
+      "song_b": "fcdf9b9a-6f88-4bd8-b75a-da5a4d39637a"
+    },
+    {
+      "id": "CAT-S2R-R4-062",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "5ab1b9bd-f86a-4a64-99a7-7956bdb63677",
+      "song_b": "17d7e672-18a5-4ddf-b4ca-11eb3280b4ca"
+    },
+    {
+      "id": "CAT-S2R-R4-063",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "fbf20f1a-c6f3-467b-be92-3b807b8347e1",
+      "song_b": "b87f2bba-4f25-402e-948b-ab7e9a3b2663"
+    },
+    {
+      "id": "CAT-S2R-R4-064",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "17fb9089-89c0-462f-a44b-41603b5f82ef",
+      "song_b": "fd0d62fc-a9ba-4611-87cc-bc3412914208"
+    },
+    {
+      "id": "CAT-S2R-R4-065",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "456a7202-acec-4245-b57e-da2dd57b7260",
+      "song_b": "81d9052d-09f1-4ef3-8ddc-9018d9f022c7"
+    },
+    {
+      "id": "CAT-S2R-R4-066",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "f55ffb35-64ff-44ab-878c-945a2cc2b416",
+      "song_b": "f7c83c24-e813-424d-940a-09a91f00f6be"
+    },
+    {
+      "id": "CAT-S2R-R4-067",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "ee2b2cfa-246f-4e09-b8ae-8899938223c4",
+      "song_b": "e13dea18-46c4-48ca-aced-aabb55b95d6c"
+    },
+    {
+      "id": "CAT-S2R-R4-068",
+      "stage": 2,
+      "revision": "filtered_136_v1",
+      "round": 4,
+      "lineage_id": "winner_cross_lineage",
+      "song_a": "a421facf-901b-4ca4-82ec-92797f9c980f",
+      "song_b": "d0dff529-bbd6-49f3-b4ad-4bfe34e9ed2f"
     }
   ]
 }
