@@ -1,7 +1,36 @@
 {
-  "version": "Personal DNA v12",
-  "updated": "2026-08-05",
-  "signals": ["round electric bass", "clean sub bass", "tight boom-bap drums", "dry tactile foreground", "mostly straight drum grid", "pre-arrival negative space", "3–5 note hook", "sectional space"],
-  "style": "One coherent song scaffold with bass as the physical anchor, tight mostly straight drums, clear kick-bass call-and-response, dry tactile foreground materials, one memorable 3–5 note carrier per section, exact hook repetition with one changed ending, strong low/high section contrast, pre-arrival negative space, and a decisive identity return. Keep the low end centered and legible, use space sectionally rather than as a constant wash, and preserve human performance detail without generic lo-fi decoration.",
-  "exclude": "breathy soft vocal, whisper vocal, vocal-chop lead, generic lo-fi dust, vinyl crackle, tape haze, rainy ambience, smoky late-night ambience, glossy atmospheric wash, bright evolving synth keys, arpeggio bed, felt piano motif, warm Rhodes bed, chopped brass hook, excessive reverb, Hybrid Reverb wash, Grain Delay, Beat Repeat, Erosion, stock DNB break, rock or metal riff, power chords, guitar solo, festival EDM build, four-on-the-floor kick, flat constant-density arrangement, rigid kick-bass unison, generic electronic presets"
+  "version": "Catalog Winner Compiler v1",
+  "updated": "2026-08-06",
+  "status": "ACTIVE_NEXT_GENERATION_DEFAULT",
+  "signals": [
+    "recognizable source gene",
+    "bass body + defined mids",
+    "section remove / transform / return",
+    "Body/Pocket 102–108 BPM",
+    "Future-Bass 140–145 BPM",
+    "refrain and call-response",
+    "controlled low end",
+    "source-dominance protected"
+  ],
+  "evidence": {
+    "positive": 44,
+    "strong_negative": 51,
+    "mixed": 41
+  },
+  "style": "Sample-soul and alternative hip-hop, 102–108 BPM, straight quantized body pocket with only light hat swing. Expose the uploaded sample clearly once, keep its contour recognizable, pass it between a short refrain, chord body, bass answers and section returns; never turn it into a continuous bed. Custom tactile drums: chest-pressure kick, narrow torn-paper snare, clipped dark hats with gaps. Bass is protagonist: round electric or Wood Bass body plus muted clean Sub 808, articulate low-mid definition, short releases, answer the kick instead of masking it. One focused motif, restrained repetition and one changed ending. If vocal, use a close low-mid human lead, natural breath pauses, short changing phrases and minimal melisma. Form: sparse intro, lean verse, one-beat removal, refrain return, stronger final return, unresolved clean ending. Dry forward center, controlled compression, almost no reverb, clear transients and limited side width.",
+  "exclude": "vintage jazz pastiche, lofi dust, vinyl crackle, tape hiss, tape wobble, obvious tape saturation, sleepy Rhodes bed, warm pad bed, ambient wash, dreamy haze, continuous sample loop, background sample bed, stock soul loop, chopped brass loop, generic trap kit, triplet hi-hat wash, loose swing wash, booming 808 slides, sub-only low end, muddy bass, thin drums, generic chorus lift, flat constant-density arrangement, busy percussion, competing melodies, bright synth keys, arpeggio bed, long reverb wash, diffuse vocal FX, stacked adlibs, belting, excessive melisma, glossy radio pop, retro revival, rock band, guitar riff, guitar solo, power chords, festival EDM, house groove, four-on-the-floor",
+  "lanes": [
+    {
+      "id": "body_pocket_v1",
+      "name": "Body / Pocket v1",
+      "style": "Sample-soul and alternative hip-hop, 102–108 BPM, straight quantized body pocket with only light hat swing. Expose the uploaded sample clearly once, keep its contour recognizable, pass it between a short refrain, chord body, bass answers and section returns; never turn it into a continuous bed. Custom tactile drums: chest-pressure kick, narrow torn-paper snare, clipped dark hats with gaps. Bass is protagonist: round electric or Wood Bass body plus muted clean Sub 808, articulate low-mid definition, short releases, answer the kick instead of masking it. One focused motif, restrained repetition and one changed ending. If vocal, use a close low-mid human lead, natural breath pauses, short changing phrases and minimal melisma. Form: sparse intro, lean verse, one-beat removal, refrain return, stronger final return, unresolved clean ending. Dry forward center, controlled compression, almost no reverb, clear transients and limited side width.",
+      "exclude": "vintage jazz pastiche, lofi dust, vinyl crackle, tape hiss, tape wobble, obvious tape saturation, sleepy Rhodes bed, warm pad bed, ambient wash, dreamy haze, continuous sample loop, background sample bed, stock soul loop, chopped brass loop, generic trap kit, triplet hi-hat wash, loose swing wash, booming 808 slides, sub-only low end, muddy bass, thin drums, generic chorus lift, flat constant-density arrangement, busy percussion, competing melodies, bright synth keys, arpeggio bed, long reverb wash, diffuse vocal FX, stacked adlibs, belting, excessive melisma, glossy radio pop, retro revival, rock band, guitar riff, guitar solo, power chords, festival EDM, house groove, four-on-the-floor"
+    },
+    {
+      "id": "future_bass_lift_impact_v1",
+      "name": "Future-Bass Lift / Impact v1",
+      "style": "Dark trap-soul future bass, 140–145 BPM. Let the uploaded sample act as the song gene: expose its hook in a sparse intro, keep its contour recognizable, then return it as a call-and-response drop melody. Punchy four-on-the-floor kick, crisp off-beat hats, short snare-roll build and precise sidechain pulse. Clean sub-bass synth supplies body; percussive synth stabs and one focused detuned saw lead answer the source without covering it. Build from low density to an explosive drop with a clear rhythmic hook, then withdraw and return with one altered ending. If the source is guitar or voice, preserve its human attack as the memory carrier. Dark club energy with emotional lift, not static atmosphere. Controlled low end, defined mids, transient clarity and short tails; wide at the drop but centered in the foundation.",
+      "exclude": "airy chord bed, filtered pad swell, shimmering pad wash, wide supersaw chord wall, stacked vocal-chop wall, vocal doubles everywhere, intimate piano-ballad intro, ambient guitar haze, orchestral string wash, generic halftime drop, slow tension-only build, weak or hidden source motif, random new lead melody, over-layered drop, bright glossy keys, long spacious reverb, muddy sub wash, distorted bass layers masking the hook, aggressive electro-house rush, 175 BPM sprint, static loop, flat same-intensity sections, childish euphoric pop, brittle high lead"
+    }
+  ]
 }
