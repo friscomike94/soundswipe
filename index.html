@@ -164,7 +164,7 @@ audio.addEventListener('play',updatePlayUI);audio.addEventListener('pause',updat
 async function copyText(text){try{await navigator.clipboard.writeText(text);toast('복사됨');}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('복사됨');}}
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('on'),1500);}
 $$('.nav').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));$('#sheetback').onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('on');};$$('[data-neither]').forEach(b=>b.onclick=()=>{if(!activeSheet)return;const x=activeSheet;activeSheet=null;$('#sheetback').classList.remove('on');if(x.kind==='round01')saveRound01Choice(x.p,b.dataset.neither);else if(x.kind==='catalog')saveCatalogChoice(x.p,b.dataset.neither);else savePairChoice(x.ns,x.p,b.dataset.neither);});
-fetch('prompt_round01_panel.json?warm='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(x=>{if(x){ROUND01=x;state.sunoSub='round01';state.mainTab='suno';renderAll();}}).catch(()=>{});
+fetch('prompt_round01_panel.json?warm='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(x=>{if(x){ROUND01=x;if(!CATALOG_ENABLED){state.sunoSub='round01';state.mainTab='suno';}renderAll();}}).catch(()=>{});
 load();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
